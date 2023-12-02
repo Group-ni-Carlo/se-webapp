@@ -1,3 +1,26 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@font-face {
+  font-family: 'BebasNeue';
+  src:
+    local('BebasNeue'),
+    url('./assets/fonts/BebasNeue-Regular.ttf') format('truetype');
+  font-weight: bold;
+}
+
+@font-face {
+  font-family: 'Montserrat';
+  src:
+    local('Montserrat'),
+    url('./assets/fonts/Montserrat-VariableFont_wght.ttf') format('truetype');
+}
+
+.title {
+  font-family: 'BebasNeue';
+}
+
+.body {
+  font-family: 'Montserrat';
+}
