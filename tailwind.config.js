@@ -34,6 +34,32 @@ export const theme = {
         success: '#4BB543',
         warning: 'FF6700'
       }
+    },
+    keyframes: {
+      slideInFromLeft: {
+        '0%': {
+          transform: 'translateX(-100%)',
+          opacity: '0'
+        },
+        '100%': {
+          transform: 'translateX(0)',
+          opacity: '1'
+        }
+      },
+      slideInFromRight: {
+        '0%': {
+          transform: 'translateX(0)',
+          opacity: '0'
+        },
+        '100%': {
+          transform: 'translateX(-100%)',
+          opacity: '1'
+        }
+      }
+    },
+    animation: {
+      slideInFromLeft: 'slideInFromLeft 0.5s ease-out',
+      slideInFromRight: 'slideInFromRight 0.5s ease-out'
     }
   }
 };
