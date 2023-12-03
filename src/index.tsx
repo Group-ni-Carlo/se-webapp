@@ -7,6 +7,7 @@ import reportWebVitals from './reportWebVitals';
 import Home from './app/Home';
 import Admin from './admin/Admin';
 import Members from './admin/Members';
+import Announcements from './admin/Announcements';
 import LoginPage from './app/Login';
 import RegisterPage from './app/Register';
 import Footer from './components/Footer/';
@@ -15,14 +16,15 @@ import Header from './components/Header/';
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
+
 root.render(
   <React.StrictMode>
     <Router>
       <Routes>
         <Route path="/" element={<Home />}></Route>
-        <Route path="/admin" element={<Admin />}>
-          <Route path="/admin/members" element={<Members />} />
-        </Route>
+        <Route path="/admin" element={<Admin />}></Route>
+        <Route path="/admin/members" element={<Members />}></Route>
+        <Route path="/admin/announcements" element={<Announcements />}></Route>
         <Route path="/login" element={<LoginPage />} />
         <Route path="/register" element={<RegisterPage />} />
       </Routes>
