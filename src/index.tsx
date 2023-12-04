@@ -1,10 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './index.css';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+
+import './index.css';
 import reportWebVitals from './reportWebVitals';
 import App from './App';
-import Admin from './Admin';
+import Admin from './admin/Admin';
+import Members from './admin/Members';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -14,7 +16,9 @@ root.render(
     <Router>
       <Routes>
         <Route path="/" element={<App />}></Route>
-        <Route path="/admin" element={<Admin />}></Route>
+        <Route path="/admin" element={<Admin />}>
+          <Route path="/admin/members" element={<Members />} />
+        </Route>
       </Routes>
     </Router>
   </React.StrictMode>
