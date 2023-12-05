@@ -12,71 +12,57 @@ type Member = {
   year: string;
 };
 
-const approveMember = async (key: number) => {
-  const data = {
-    id: key
-  };
-  const response = await fetch(
-    `http://127.0.0.1:5000/members/requests/approve`,
-    {
-      method: 'PATCH',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(data)
-    }
-  );
-  if (response.ok) {
-    console.log('Approved member!');
-  }
-};
-
-const deleteMemberOrRequest = async (key: number) => {
-  const data = {
-    id: key
-  };
-  const response = await fetch(`http://127.0.0.1:5000/members/delete`, {
-    method: 'DELETE',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify(data)
-  });
-  if (response.ok) {
-    console.log('Member deleted!');
-  }
-};
-
 const Members: React.FC = () => {
   const [activeSelection, setActiveSelection] = useState(0);
   const [members, setMembers] = useState<Member[]>([]);
   const [requests, setRequests] = useState<Member[]>([]);
 
   const fetchMemberList = async () => {
-    const response = await fetch(`http://127.0.0.1:5000/members/list`);
-    const data = await response.json();
+    const res = await fetch(`http://127.0.0.1:5000/members/list`);
+    const data = await res.json();
     setMembers(data);
   };
 
   const fetchRequests = async () => {
-    const response = await fetch(`http://127.0.0.1:5000/members/requests`);
-    const data = await response.json();
+    const res = await fetch(`http://127.0.0.1:5000/members/requests`);
+    const data = await res.json();
     setRequests(data);
   };
 
-  const fetchAfterHandling = () => {
-    fetchRequests();
-    fetchMemberList();
+  const approveMember = async (key: number) => {
+    const member = {
+      id: key
+    };
+    const res = await fetch(`http://127.0.0.1:5000/members/approve`, {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(member)
+    });
+    if (!res.ok) {
+      console.log('Error approving member!');
+    }
+    await fetchMemberList();
+    await fetchRequests();
   };
 
-  const handleApprove = async (key: number) => {
-    await approveMember(key);
-    fetchAfterHandling();
-  };
-
-  const handleDelete = async (key: number) => {
-    await deleteMemberOrRequest(key);
-    fetchAfterHandling();
+  const deleteMemberOrRequest = async (key: number) => {
+    const member = {
+      id: key
+    };
+    const res = await fetch(`http://127.0.0.1:5000/members/delete`, {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(member)
+    });
+    if (!res.ok) {
+      console.log('Error deleting member!');
+    }
+    await fetchMemberList();
+    await fetchRequests();
   };
 
   useEffect(() => {
@@ -134,8 +120,8 @@ const Members: React.FC = () => {
               key={request.id}
               name={request.name}
               email={request.email}
-              approveRequest={() => handleApprove(request.id)}
-              deleteRequest={() => handleDelete(request.id)}
+              approveRequest={() => approveMember(request.id)}
+              deleteRequest={() => deleteMemberOrRequest(request.id)}
             />
           ))}
     </Fragment>
