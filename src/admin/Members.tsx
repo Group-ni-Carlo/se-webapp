@@ -5,8 +5,85 @@ import { mdiAccount, mdiAccountCheck } from '@mdi/js';
 import AdminMemberList from '../components/admin/AdminMemberList';
 import AdminMemberRequests from '../components/admin/AdminMemberRequests';
 
+type Member = {
+  id: number;
+  name: string;
+  email: string;
+  year: string;
+};
+
+const approveMember = async (key: number) => {
+  const data = {
+    id: key
+  };
+  const response = await fetch(
+    `http://127.0.0.1:5000/members/requests/approve`,
+    {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(data)
+    }
+  );
+  if (response.ok) {
+    console.log('Approved member!');
+  }
+};
+
+const deleteMemberOrRequest = async (key: number) => {
+  const data = {
+    id: key
+  };
+  const response = await fetch(`http://127.0.0.1:5000/members/delete`, {
+    method: 'DELETE',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(data)
+  });
+  if (response.ok) {
+    console.log('Member deleted!');
+  }
+};
+
 const Members: React.FC = () => {
   const [activeSelection, setActiveSelection] = useState(0);
+  const [members, setMembers] = useState<Member[]>([]);
+  const [requests, setRequests] = useState<Member[]>([]);
+
+  const fetchMemberList = async () => {
+    const response = await fetch(`http://127.0.0.1:5000/members/list`);
+    const data = await response.json();
+    setMembers(data);
+  };
+
+  const fetchRequests = async () => {
+    const response = await fetch(`http://127.0.0.1:5000/members/requests`);
+    const data = await response.json();
+    setRequests(data);
+  };
+
+  const fetchAfterHandling = () => {
+    fetchRequests();
+    fetchMemberList();
+  };
+
+  const handleApprove = async (key: number) => {
+    await approveMember(key);
+    fetchAfterHandling();
+  };
+
+  const handleDelete = async (key: number) => {
+    await deleteMemberOrRequest(key);
+    fetchAfterHandling();
+  };
+
+  useEffect(() => {
+    fetchMemberList();
+    fetchRequests();
+  }, []);
+
   return (
     <Fragment>
       <nav
@@ -43,15 +120,24 @@ const Members: React.FC = () => {
           <h1>Requests</h1>
         </div>
       </nav>
-      {activeSelection === 0 ? (
-        <AdminMemberList name={'Test Name'} year="Test Year" />
-      ) : (
-        <AdminMemberRequests
-          name={'Test Name'}
-          year={'Test Year'}
-          email={'test.email-70@cpu.edu.ph'}
-        />
-      )}
+      {activeSelection === 0
+        ? members.map((member) => (
+            <AdminMemberList
+              key={member.id}
+              name={member.name}
+              year={member.year}
+              deleteMember={() => deleteMemberOrRequest(member.id)}
+            />
+          ))
+        : requests.map((request) => (
+            <AdminMemberRequests
+              key={request.id}
+              name={request.name}
+              email={request.email}
+              approveRequest={() => handleApprove(request.id)}
+              deleteRequest={() => handleDelete(request.id)}
+            />
+          ))}
     </Fragment>
   );
 };

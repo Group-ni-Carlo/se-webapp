@@ -5,11 +5,13 @@ import { mdiAccount, mdiDelete } from '@mdi/js';
 type Props = {
   name: string;
   year: string;
+  deleteMember: () => void;
 };
 
 const AdminMemberList: React.FC<Props> = (props: {
   name: string;
   year: string;
+  deleteMember: () => void;
 }) => {
   return (
     <Fragment>
@@ -29,7 +31,7 @@ const AdminMemberList: React.FC<Props> = (props: {
           <span>
             <Icon className="text-shade-dark" path={mdiAccount} size={1} />
           </span>
-          <span>
+          <span onClick={props.deleteMember}>
             <Icon className="text-shade-dark" path={mdiDelete} size={1} />
           </span>
         </div>
