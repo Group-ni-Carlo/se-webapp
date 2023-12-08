@@ -5,8 +5,71 @@ import { mdiAccount, mdiAccountCheck } from '@mdi/js';
 import AdminMemberList from '../components/admin/AdminMemberList';
 import AdminMemberRequests from '../components/admin/AdminMemberRequests';
 
+type Member = {
+  id: number;
+  name: string;
+  email: string;
+  year: string;
+};
+
 const Members: React.FC = () => {
   const [activeSelection, setActiveSelection] = useState(0);
+  const [members, setMembers] = useState<Member[]>([]);
+  const [requests, setRequests] = useState<Member[]>([]);
+
+  const fetchMemberList = async () => {
+    const res = await fetch(`http://127.0.0.1:5000/members/list`);
+    const data = await res.json();
+    setMembers(data);
+  };
+
+  const fetchRequests = async () => {
+    const res = await fetch(`http://127.0.0.1:5000/members/requests`);
+    const data = await res.json();
+    setRequests(data);
+  };
+
+  const approveMember = async (key: number) => {
+    const member = {
+      id: key
+    };
+    const res = await fetch(`http://127.0.0.1:5000/members/approve`, {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(member)
+    });
+    if (!res.ok) {
+      console.log('Error approving member!');
+    }
+    await fetchMemberList();
+    await fetchRequests();
+  };
+
+  const deleteMemberOrRequest = async (key: number) => {
+    const member = {
+      id: key
+    };
+    const res = await fetch(`http://127.0.0.1:5000/members/delete`, {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(member)
+    });
+    if (!res.ok) {
+      console.log('Error deleting member!');
+    }
+    await fetchMemberList();
+    await fetchRequests();
+  };
+
+  useEffect(() => {
+    fetchMemberList();
+    fetchRequests();
+  }, []);
+
   return (
     <Fragment>
       <nav
@@ -43,15 +106,24 @@ const Members: React.FC = () => {
           <h1>Requests</h1>
         </div>
       </nav>
-      {activeSelection === 0 ? (
-        <AdminMemberList name={'Test Name'} year="Test Year" />
-      ) : (
-        <AdminMemberRequests
-          name={'Test Name'}
-          year={'Test Year'}
-          email={'test.email-70@cpu.edu.ph'}
-        />
-      )}
+      {activeSelection === 0
+        ? members.map((member) => (
+            <AdminMemberList
+              key={member.id}
+              name={member.name}
+              year={member.year}
+              deleteMember={() => deleteMemberOrRequest(member.id)}
+            />
+          ))
+        : requests.map((request) => (
+            <AdminMemberRequests
+              key={request.id}
+              name={request.name}
+              email={request.email}
+              approveRequest={() => approveMember(request.id)}
+              deleteRequest={() => deleteMemberOrRequest(request.id)}
+            />
+          ))}
     </Fragment>
   );
 };
