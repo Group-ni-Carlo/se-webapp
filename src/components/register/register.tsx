@@ -8,7 +8,7 @@ const Register: React.FC = () => {
 
   const handleSubmit = (event: React.FormEvent) => {
     event.preventDefault();
-    // Registration logic here
+    //
   };
 
   return (
