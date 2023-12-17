@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Fragment } from 'react';
+import { Link } from 'react-router-dom';
 
 const Login: React.FC = () => {
   const [email, setEmail] = useState('');
@@ -68,12 +69,12 @@ const Login: React.FC = () => {
                 </a>
               </div>
               <div className="text-sm">
-                <a
-                  href="#"
+                <Link
+                  to="/register"
                   className="font-medium text-indigo-600 hover:text-indigo-500"
                 >
                   Don't have an account?
-                </a>
+                </Link>
               </div>
             </div>
 
