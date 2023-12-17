@@ -8,6 +8,7 @@ import App from './App';
 import Admin from './admin/Admin';
 import Members from './admin/Members';
 import LoginPage from './login/login';
+import RegisterPage from './register/register';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -21,6 +22,7 @@ root.render(
           <Route path="/admin/members" element={<Members />} />
         </Route>
         <Route path="/login" element={<LoginPage />} />
+        <Route path="/register" element={<RegisterPage />} />
       </Routes>
     </Router>
   </React.StrictMode>
