@@ -1,14 +1,52 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Fragment } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const Register: React.FC = () => {
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [firstname, setFirstname] = useState('');
+  const [lastname, setLastname] = useState('');
 
-  const handleSubmit = (event: React.FormEvent) => {
+  const navigate = useNavigate();
+
+  const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
-    //
+
+    if (!email.endsWith('@cpu.edu.ph')) {
+      window.alert('Must be a CPU student');
+      return;
+    }
+
+    try {
+      const response = await fetch('http://localhost:5000/register', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          firstname,
+          lastname,
+          username,
+          email,
+          password
+        })
+      });
+
+      if (response.ok) {
+        console.log('User registered!');
+        window.alert(
+          'Registration successful! You will be redirected to the login page.'
+        );
+        setTimeout(() => {
+          navigate('/login');
+        }, 2000);
+      }
+    } catch (err) {
+      console.log('Failed to register user', err);
+      window.alert('An error occurred');
+    }
   };
 
   return (
@@ -24,6 +62,42 @@ const Register: React.FC = () => {
             <input type="hidden" name="remember" value="true" />
             <div className="rounded-md shadow-sm -space-y-px">
               <div>
+                <label htmlFor="firstname" className="sr-only">
+                  Firstname
+                </label>
+                <input
+                  id="firstname"
+                  name="firstname"
+                  type="text"
+                  required
+                  className="appearance-none rounded-none relative block w-full px-3 py-2 border border-secondary-300
+                placeholder-neutral-500 text-gray-900 focus:outline-none rounded-t-md focus:ring-secondary-700
+                 focus:border-secondary-300 focus:z-10 sm:text-sm"
+                  placeholder="Firstname"
+                  value={firstname}
+                  onChange={(e) => setFirstname(e.target.value)}
+                />
+              </div>
+
+              <div>
+                <label htmlFor="lastname" className="sr-only">
+                  lastname
+                </label>
+                <input
+                  id="lastname"
+                  name="lastname"
+                  type="text"
+                  required
+                  className="appearance-none rounded-none relative block w-full px-3 py-2 border border-secondary-300
+                placeholder-neutral-500 text-gray-900 focus:outline-none focus:ring-secondary-700
+                 focus:border-secondary-300 focus:z-10 sm:text-sm"
+                  placeholder="Lastname"
+                  value={lastname}
+                  onChange={(e) => setLastname(e.target.value)}
+                />
+              </div>
+
+              <div>
                 <label htmlFor="username" className="sr-only">
                   Username
                 </label>
@@ -33,7 +107,7 @@ const Register: React.FC = () => {
                   type="text"
                   required
                   className="appearance-none rounded-none relative block w-full px-3 py-2 border border-secondary-300
-                   placeholder-neutral-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-secondary-700
+                   placeholder-neutral-500 text-gray-900 focus:outline-none focus:ring-secondary-700
                     focus:border-secondary-300 focus:z-10 sm:text-sm"
                   placeholder="Username"
                   value={username}
@@ -57,6 +131,7 @@ const Register: React.FC = () => {
                   onChange={(e) => setEmail(e.target.value)}
                 />
               </div>
+
               <div>
                 <label htmlFor="password" className="sr-only">
                   Password
@@ -66,6 +141,7 @@ const Register: React.FC = () => {
                   name="password"
                   type="password"
                   required
+                  minLength={6}
                   className="appearance-none rounded-none relative block w-full px-3 py-2 border border-secondary-300
                    placeholder-neutral-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-secondary-700
                     focus:border-secondary-300 focus:z-10 sm:text-sm"

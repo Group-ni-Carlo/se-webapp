@@ -1,14 +1,43 @@
 import React, { useState } from 'react';
 import { Fragment } from 'react';
 import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const Login: React.FC = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const handleSubmit = (event: React.FormEvent) => {
+  const navigate = useNavigate();
+
+  const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
-    //
+    try {
+      const response = await fetch('http://localhost:5000/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          email,
+          password
+        })
+      });
+
+      if (response.ok) {
+        console.log('User logged in!');
+        window.alert('Logging in!');
+
+        setTimeout(() => {
+          navigate('/PUT THE REDIRECTORY HERE!!!!!!!!!!!!');
+        }, 2000);
+      } else {
+        const errorMessage = await response.text();
+        window.alert(errorMessage);
+      }
+    } catch (err) {
+      console.log('Failed to log in', err);
+      window.alert('An error occurred');
+    }
   };
 
   return (
@@ -25,7 +54,7 @@ const Login: React.FC = () => {
             <div className="rounded-md shadow-sm -space-y-px">
               <div>
                 <label htmlFor="email-address" className="sr-only">
-                  Username/Email Address
+                  Email Address
                 </label>
                 <input
                   id="email-address"
@@ -35,7 +64,7 @@ const Login: React.FC = () => {
                   className="appearance-none rounded-none relative block w-full px-3 py-2 border border-secondary-300
                    placeholder-neutral-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-secondary-700
                    focus:border-secondary-300 focus:z-10 sm:text-sm"
-                  placeholder="Username/Email Address"
+                  placeholder="Email Address"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                 />
