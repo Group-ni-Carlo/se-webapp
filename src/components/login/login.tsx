@@ -28,11 +28,11 @@ const Login: React.FC = () => {
         window.alert('Logging in!');
 
         setTimeout(() => {
-          navigate('/PUT THE REDIRECTORY HERE!!!!!!!!!!!!');
+          navigate('/');
         }, 2000);
       } else {
-        const errorMessage = await response.text();
-        window.alert(errorMessage);
+        const { message } = await response.json();
+        window.alert(message);
       }
     } catch (err) {
       console.log('Failed to log in', err);
