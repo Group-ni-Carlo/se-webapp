@@ -1,0 +1,16 @@
+{
+  "title": "Recent Events",
+  "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent ut est et est tristique feugiat. Maecenas pharetra tellus felis, id vestibulum ligula venenatis vitae. Aliquam.",
+  "section": [
+    {
+      "title": "Lorem Ipsum",
+      "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent ut est et est tristique feugiat.",
+      "icon": "notes.svg"
+    },
+    {
+      "title": "Lorem Ipsum",
+      "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent ut est et est tristique feugiat.",
+      "icon": "notes.svg"
+    }
+  ]
+}
