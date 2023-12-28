@@ -6,8 +6,8 @@ const Register: React.FC = () => {
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [firstname, setFirstname] = useState('');
-  const [lastname, setLastname] = useState('');
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
 
   const navigate = useNavigate();
 
@@ -26,8 +26,8 @@ const Register: React.FC = () => {
           'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-          firstname,
-          lastname,
+          firstName,
+          lastName,
           username,
           email,
           password
@@ -62,38 +62,38 @@ const Register: React.FC = () => {
             <input type="hidden" name="remember" value="true" />
             <div className="rounded-md shadow-sm -space-y-px">
               <div>
-                <label htmlFor="firstname" className="sr-only">
+                <label htmlFor="firstName" className="sr-only">
                   Firstname
                 </label>
                 <input
-                  id="firstname"
-                  name="firstname"
+                  id="firstName"
+                  name="firstName"
                   type="text"
                   required
                   className="appearance-none rounded-none relative block w-full px-3 py-2 border border-secondary-300
                 placeholder-neutral-500 text-gray-900 focus:outline-none rounded-t-md focus:ring-secondary-700
                  focus:border-secondary-300 focus:z-10 sm:text-sm"
                   placeholder="Firstname"
-                  value={firstname}
-                  onChange={(e) => setFirstname(e.target.value)}
+                  value={firstName}
+                  onChange={(e) => setFirstName(e.target.value)}
                 />
               </div>
 
               <div>
-                <label htmlFor="lastname" className="sr-only">
-                  lastname
+                <label htmlFor="lastName" className="sr-only">
+                  lastName
                 </label>
                 <input
-                  id="lastname"
-                  name="lastname"
+                  id="lastName"
+                  name="lastName"
                   type="text"
                   required
                   className="appearance-none rounded-none relative block w-full px-3 py-2 border border-secondary-300
                 placeholder-neutral-500 text-gray-900 focus:outline-none focus:ring-secondary-700
                  focus:border-secondary-300 focus:z-10 sm:text-sm"
                   placeholder="Lastname"
-                  value={lastname}
-                  onChange={(e) => setLastname(e.target.value)}
+                  value={lastName}
+                  onChange={(e) => setLastName(e.target.value)}
                 />
               </div>
 
