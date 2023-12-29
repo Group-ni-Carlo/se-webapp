@@ -1,16 +1,16 @@
-import { lazy } from "react";
-import IntroContent from "../../content/IntroContent.json";
-import AboutUs from "../../content/AboutUs.json";
-import RecentEvents from "../../content/RecentEvents.json";
-import PartnersAndSponsors from "../../content/PartnersAndSponsors.json";
-import Organizations from "../../content/Organizations.json";
-import ContactContent from "../../content/ContactContent.json";
+import { lazy } from 'react';
+import IntroContent from '../content/IntroContent.json';
+import AboutUs from '../content/AboutUs.json';
+import RecentEvents from '../content/RecentEvents.json';
+import PartnersAndSponsors from '../content/PartnersAndSponsors.json';
+import Organizations from '../content/Organizations.json';
+import ContactContent from '../content/ContactContent.json';
 
-const Contact = lazy(() => import("../../components/ContactForm"));
-const MiddleBlock = lazy(() => import("../../components/MiddleBlock"));
-const Container = lazy(() => import("../../common/Container"));
-const ScrollToTop = lazy(() => import("../../common/ScrollToTop"));
-const ContentBlock = lazy(() => import("../../components/ContentBlock"));
+const Contact = lazy(() => import('../components/ContactForm'));
+const MiddleBlock = lazy(() => import('../components/MiddleBlock'));
+const Container = lazy(() => import('../common/Container'));
+const ScrollToTop = lazy(() => import('../common/ScrollToTop'));
+const ContentBlock = lazy(() => import('../components/ContentBlock'));
 
 const Home = () => {
   return (
