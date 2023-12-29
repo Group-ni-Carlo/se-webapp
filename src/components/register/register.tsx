@@ -35,10 +35,8 @@ const Register: React.FC = () => {
       });
 
       if (response.ok) {
-        console.log('User registered!');
-        window.alert(
-          'Registration successful! You will be redirected to the login page.'
-        );
+        const { message } = await response.json();
+        window.alert(message);
         setTimeout(() => {
           navigate('/login');
         }, 2000);

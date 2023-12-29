@@ -1,11 +1,26 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 
 const App: React.FC = () => {
-  let loggedIn = false;
+  const [logStatus, setLogStatus] = useState(false);
+  const [user, setUser] = useState({
+    firstName: '',
+    lastName: '',
+    email: '',
+    yearLevel: ''
+  });
+
   const getStatus = async () => {
-    const res = await fetch('/me');
-    const data = await res.json();
-    loggedIn = data.status;
+    const token = localStorage.getItem('token');
+    const res = await fetch('http://localhost:5000/me', {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`
+      }
+    });
+    const { status, me } = await res.json();
+    setLogStatus(status);
+    setUser(me);
   };
 
   useEffect(() => {
@@ -15,7 +30,11 @@ const App: React.FC = () => {
   return (
     <div className="flex flex-col items-center justify-center w-full">
       <h1>Home Page</h1>
-      {loggedIn ? <h1>You are logged in</h1> : <h1>You are not logged in.</h1>}
+      {logStatus ? (
+        <h1>Hello, {user.firstName}</h1>
+      ) : (
+        <h1>You are not logged in!</h1>
+      )}
     </div>
   );
 };

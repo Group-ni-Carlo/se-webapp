@@ -24,15 +24,15 @@ const Login: React.FC = () => {
       });
 
       if (response.ok) {
-        console.log('User logged in!');
-        window.alert('Logging in!');
+        const { message, token } = await response.json();
+        window.alert(message);
+        localStorage.setItem(`token`, token);
 
         setTimeout(() => {
           navigate('/');
         }, 2000);
       } else {
-        const { message } = await response.json();
-        window.alert(message);
+        window.alert('Error logging in!');
       }
     } catch (err) {
       console.log('Failed to log in', err);
