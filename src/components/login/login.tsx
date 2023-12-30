@@ -11,20 +11,19 @@ const Login: React.FC = () => {
 
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
+    const response = await fetch('http://localhost:5000/login', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        email,
+        password
+      })
+    });
+    const { message, token } = await response.json();
     try {
-      const response = await fetch('http://localhost:5000/login', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          email,
-          password
-        })
-      });
-
       if (response.ok) {
-        const { message, token } = await response.json();
         window.alert(message);
         localStorage.setItem(`token`, token);
 
@@ -32,11 +31,12 @@ const Login: React.FC = () => {
           navigate('/');
         }, 2000);
       } else {
-        window.alert('Error logging in!');
+        const { message } = await response.json();
+        window.alert(message);
       }
     } catch (err) {
       console.log('Failed to log in', err);
-      window.alert('An error occurred');
+      window.alert(message);
     }
   };
 
