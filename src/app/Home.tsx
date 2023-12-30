@@ -12,8 +12,7 @@ import Organizations from '../content/Organizations.json';
 import ContactContent from '../content/ContactContent.json';
 import Footer from '../components/Footer/';
 import Header from '../components/Header/';
-import './index.css';
-
+import '../index.css';
 const Home = () => {
   return (
     <Fragment>
