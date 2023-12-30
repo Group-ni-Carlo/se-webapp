@@ -7,9 +7,10 @@ import AdminMemberRequests from '../components/admin/AdminMemberRequests';
 
 type Member = {
   id: number;
-  name: string;
+  first_name: string;
+  last_name: string;
   email: string;
-  year: string;
+  year_level: string;
 };
 
 const Members: React.FC = () => {
@@ -110,15 +111,15 @@ const Members: React.FC = () => {
         ? members.map((member) => (
             <AdminMemberList
               key={member.id}
-              name={member.name}
-              year={member.year}
+              name={`${member.first_name} ${member.last_name}`}
+              year={member.year_level}
               deleteMember={() => deleteMemberOrRequest(member.id)}
             />
           ))
         : requests.map((request) => (
             <AdminMemberRequests
               key={request.id}
-              name={request.name}
+              name={`${request.first_name} ${request.last_name}`}
               email={request.email}
               approveRequest={() => approveMember(request.id)}
               deleteRequest={() => deleteMemberOrRequest(request.id)}
