@@ -15,11 +15,11 @@ const LeftContentBlock = ({
   id
 }: ContentBlockProps) => {
   return (
-    <section className="relative px-40 py-80 md:px-16 md:py-32">
+    <section className="relative py-30 md:px-16 md:py-32">
       <FadeAny direction="left">
         <Row justify="center" align="middle" id={id}>
           <Col>
-            <div className="relative max-w-1080px md:pt-32">
+            <div className="relative md:pt-32">
               <h6 className="text-white uppercase text-4xl leading-1rem py-8 font-montserrat">
                 {t(title)}
               </h6>
