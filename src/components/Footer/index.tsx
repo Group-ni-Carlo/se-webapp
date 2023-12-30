@@ -1,25 +1,7 @@
-import { Row, Col } from "antd";
-import { withTranslation } from "react-i18next";
-import { SvgIcon } from "../../common/SvgIcon";
-import Container from "../../common/Container";
-
-import i18n from "i18next";
-import {
-  FooterSection,
-  Title,
-  NavLink,
-  Extra,
-  LogoContainer,
-  Para,
-  Large,
-  Chat,
-  Empty,
-  FooterContainer,
-  Language,
-  Label,
-  LanguageSwitch,
-  LanguageSwitchContainer,
-} from "./styles";
+import { Row, Col } from 'antd';
+import { withTranslation } from 'react-i18next';
+import { SvgIcon } from '../../common/SvgIcon';
+import Container from '../../common/Container';
 
 interface SocialLinkProps {
   href: string;
@@ -27,10 +9,6 @@ interface SocialLinkProps {
 }
 
 const Footer = ({ t }: any) => {
-  const handleChange = (language: string) => {
-    i18n.changeLanguage(language);
-  };
-
   const SocialLink = ({ href, src }: SocialLinkProps) => {
     return (
       <a
@@ -39,6 +17,7 @@ const Footer = ({ t }: any) => {
         rel="noopener noreferrer"
         key={src}
         aria-label={src}
+        className="transform hover:scale-110 transition-transform duration-100"
       >
         <SvgIcon src={src} width="25px" height="25px" />
       </a>
@@ -47,46 +26,34 @@ const Footer = ({ t }: any) => {
 
   return (
     <>
-      <FooterSection>
+      <footer className="bg-gray-200 py-10">
         <Container>
           <Row justify="space-between">
             <Col lg={10} md={10} sm={12} xs={12}>
-              <Language>{t("Contact")}</Language>
-              <Large to="/">{t("Tell us everything")}</Large>
-              <Para>
+              <h4 className="text-2xl capitalize text-black">{t('Contact')}</h4>
+              <p className="text-black text-sm w-7/12">
                 {t(`Do you have any questions? Feel free to reach out.`)}
-              </Para>
-              <a href="mailto:psse.cpu@edu.ph">
-                <Chat>{t(`Contact Us`)}</Chat>
+              </p>
+              <a
+                href="mailto:psse.cpu@edu.ph"
+                className="text-blue-700 border-b border-blue-700 cursor-pointer mt-4 transition-all duration-200 text-lg"
+              >
+                {t(`Contact Us`)}
               </a>
             </Col>
             <Col lg={10} md={10} sm={12} xs={12}>
-              <Language>{t("Address")}</Language>
-              <Para>Lopez Jaena St.</Para>
-              <Para>Jaro, Iloilo City</Para>
-              <Para>Philippines</Para>
+              <h4 className="text-2xl capitalize text-black">{t('Address')}</h4>
+              <p className="text-black text-sm w-7/12">Lopez Jaena St.</p>
+              <p className="text-black text-sm w-7/12">Jaro, Iloilo City</p>
+              <p className="text-black text-sm w-7/12">Philippines</p>
             </Col>
           </Row>
         </Container>
-      </FooterSection>
-      <Extra>
+      </footer>
+      <section className="bg-gray-200 relative w-full mx-auto pb-8">
         <Container border={true}>
-          <Row
-            justify="space-between"
-            align="middle"
-            style={{ paddingTop: "3rem" }}
-          >
-            <NavLink to="/">
-              <LogoContainer>
-                <SvgIcon
-                  src="logo.svg"
-                  aria-label="homepage"
-                  width="101px"
-                  height="64px"
-                />
-              </LogoContainer>
-            </NavLink>
-            <FooterContainer>
+          <Row justify="center" align="middle" className="pt-12">
+            <div className="flex justify-center items-center space-x-20 max-w-md w-full text-center transition-all duration-100">
               <SocialLink
                 href="https://github.com/Group-ni-Carlo/se-webapp-frontend"
                 src="github.svg"
@@ -96,10 +63,10 @@ const Footer = ({ t }: any) => {
                 src="facebook.svg"
               />
               <SocialLink href="mailto:psse.cpu@edu.ph" src="email.svg" />
-            </FooterContainer>
+            </div>
           </Row>
         </Container>
-      </Extra>
+      </section>
     </>
   );
 };
