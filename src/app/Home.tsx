@@ -1,4 +1,9 @@
-import { lazy, Fragment } from 'react';
+import { Fragment } from 'react';
+import Contact from '../components/ContactForm';
+import MiddleBlock from '../components/MiddleBlock';
+import Container from '../common/Container';
+import ScrollToTop from '../common/ScrollToTop';
+import ContentBlock from '../components/ContentBlock';
 import IntroContent from '../content/IntroContent.json';
 import AboutUs from '../content/AboutUs.json';
 import RecentEvents from '../content/RecentEvents.json';
@@ -7,18 +12,11 @@ import Organizations from '../content/Organizations.json';
 import ContactContent from '../content/ContactContent.json';
 import Footer from '../components/Footer/';
 import Header from '../components/Header/';
-import { Styles } from '../styles/styles';
-
-const Contact = lazy(() => import('../components/ContactForm'));
-const MiddleBlock = lazy(() => import('../components/MiddleBlock'));
-const Container = lazy(() => import('../common/Container'));
-const ScrollToTop = lazy(() => import('../common/ScrollToTop'));
-const ContentBlock = lazy(() => import('../components/ContentBlock'));
+import './index.css';
 
 const Home = () => {
   return (
     <Fragment>
-      <Styles />
       <Header />
       <Container>
         <ScrollToTop />
