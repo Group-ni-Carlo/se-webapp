@@ -26,7 +26,7 @@ const RightBlock = ({
       <FadeAny direction="right">
         <Row justify="space-between" align="middle" id={id}>
           <Col lg={11} md={11} sm={11} xs={24}>
-            <div className="relative max-w-md lg:pb-16">
+            <div className="relative max-w-lg lg:pb-16">
               <h6 className="mb-4">{t(title)}</h6>
               <p className="mb-8">{t(content)}</p>
               <div className="flex justify-between max-w-full lg:max-w-4/5">
