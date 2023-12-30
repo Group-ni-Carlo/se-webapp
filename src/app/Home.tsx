@@ -1,5 +1,4 @@
 import { Fragment } from 'react';
-import Contact from '../components/ContactForm';
 import MiddleBlock from '../components/MiddleBlock';
 import Container from '../common/Container';
 import ScrollToTop from '../common/ScrollToTop';
@@ -54,11 +53,6 @@ const Home = () => {
           section={Organizations.section}
           icon="image.svg"
           id="product"
-        />
-        <Contact
-          title={ContactContent.title}
-          content={ContactContent.text}
-          id="contact"
         />
       </Container>
       <Footer />
