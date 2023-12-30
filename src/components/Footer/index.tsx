@@ -32,14 +32,10 @@ const Footer = ({ t }: any) => {
             <Col lg={10} md={10} sm={12} xs={12}>
               <h4 className="text-2xl capitalize text-black">{t('Contact')}</h4>
               <p className="text-black text-sm w-7/12">
-                {t(`Do you have any questions? Feel free to reach out.`)}
+                {t(
+                  `Do you have any questions? Contact Us at psse.cpu@cpu.edu.ph`
+                )}
               </p>
-              <a
-                href="mailto:psse.cpu@edu.ph"
-                className="text-blue-700 border-b border-blue-700 cursor-pointer mt-4 transition-all duration-200 text-lg"
-              >
-                {t(`Contact Us`)}
-              </a>
             </Col>
             <Col lg={10} md={10} sm={12} xs={12}>
               <h4 className="text-2xl capitalize text-black">{t('Address')}</h4>
