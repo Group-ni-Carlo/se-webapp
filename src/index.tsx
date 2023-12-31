@@ -9,8 +9,8 @@ import Admin from './admin/Admin';
 import Members from './admin/Members';
 import LoginPage from './app/Login';
 import RegisterPage from './app/Register';
-import Footer from './components/Footer/';
-import Header from './components/Header/';
+import Merch from './app/Merch';
+import Order from './app/Order';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -22,6 +22,9 @@ root.render(
         <Route path="/" element={<Home />}></Route>
         <Route path="/admin" element={<Admin />}>
           <Route path="/admin/members" element={<Members />} />
+        </Route>
+        <Route path="/merch" element={<Merch />}>
+          <Route path="/order" element={<Order />} />
         </Route>
         <Route path="/login" element={<LoginPage />} />
         <Route path="/register" element={<RegisterPage />} />
