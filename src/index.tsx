@@ -7,7 +7,9 @@ import reportWebVitals from './reportWebVitals';
 import Home from './app/Home';
 import Admin from './admin/Admin';
 import Members from './admin/Members';
-import Announcements from './admin/Announcements';
+import CreateAnnouncements from './admin/announcements/CreateAnnouncements';
+import { AnnouncementsList } from './admin/announcements/AnnouncementsList';
+import EditAnnouncements from './admin/announcements/EditAnnouncements';
 import LoginPage from './app/Login';
 import RegisterPage from './app/Register';
 import Footer from './components/Footer/';
@@ -24,7 +26,18 @@ root.render(
         <Route path="/" element={<Home />}></Route>
         <Route path="/admin" element={<Admin />}></Route>
         <Route path="/admin/members" element={<Members />}></Route>
-        <Route path="/admin/announcements" element={<Announcements />}></Route>
+        <Route
+          path="/admin/announcements"
+          element={<AnnouncementsList />}
+        ></Route>
+        <Route
+          path="/admin/create/announcements"
+          element={<CreateAnnouncements />}
+        ></Route>
+        <Route
+          path="/admin/edit/announcements/:id"
+          element={<EditAnnouncements />}
+        ></Route>
         <Route path="/login" element={<LoginPage />} />
         <Route path="/register" element={<RegisterPage />} />
       </Routes>

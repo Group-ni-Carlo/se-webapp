@@ -2,8 +2,8 @@ import React, { Fragment, useEffect, useState } from 'react';
 import Icon from '@mdi/react';
 
 import { mdiAccount, mdiAccountCheck } from '@mdi/js';
-import AdminMemberList from '../components/admin/AdminMemberList';
-import AdminMemberRequests from '../components/admin/AdminMemberRequests';
+import AdminMemberList from '../components/admin/members/AdminMemberList';
+import AdminMemberRequests from '../components/admin/members/AdminMemberRequests';
 
 type Member = {
   id: number;
