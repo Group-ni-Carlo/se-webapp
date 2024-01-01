@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const IndivMerch = (props: {
   close: () => void;
@@ -8,6 +8,13 @@ const IndivMerch = (props: {
   price: string;
   description: string;
 }) => {
+  const navigate = useNavigate();
+  const redirectToOrder = () => {
+    setTimeout(() => {
+      navigate(`/order?item=${props.title}`);
+    }, 1000);
+  };
+
   return (
     <Fragment>
       <div
@@ -31,11 +38,12 @@ const IndivMerch = (props: {
           <button className="bg-primary-700 px-6 py-3 self-end text-4xl title rounded-xl hover:bg-secondary-700 active:bg-secondary-500">
             <span onClick={props.close}>Close</span>
           </button>
-          <Link to={`/merch/order?item=${props.title}`}>
-            <button className="bg-primary-700 px-6 py-3 self-end text-4xl title rounded-xl hover:bg-secondary-700 active:bg-secondary-500">
-              <span>Order</span>
-            </button>
-          </Link>
+          <button
+            onClick={() => redirectToOrder()}
+            className="bg-primary-700 px-6 py-3 self-end text-4xl title rounded-xl hover:bg-secondary-700 active:bg-secondary-500"
+          >
+            <span>Order</span>
+          </button>
         </div>
       </div>
     </Fragment>

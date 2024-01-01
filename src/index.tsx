@@ -23,9 +23,8 @@ root.render(
         <Route path="/admin" element={<Admin />}>
           <Route path="/admin/members" element={<Members />} />
         </Route>
-        <Route path="/merch" element={<Merch />}>
-          <Route path="/order" element={<Order />} />
-        </Route>
+        <Route path="/merch" element={<Merch />}></Route>
+        <Route path="/order" element={<Order />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/register" element={<RegisterPage />} />
       </Routes>
