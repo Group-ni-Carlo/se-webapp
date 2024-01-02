@@ -1,5 +1,4 @@
 import { Row, Col } from 'antd';
-import { withTranslation } from 'react-i18next';
 import { SvgIcon } from '../../common/SvgIcon';
 import Container from '../../common/Container';
 
@@ -8,7 +7,7 @@ interface SocialLinkProps {
   src: string;
 }
 
-const Footer = ({ t }: any) => {
+const Footer = () => {
   const SocialLink = ({ href, src }: SocialLinkProps) => {
     return (
       <a
@@ -30,15 +29,13 @@ const Footer = ({ t }: any) => {
         <Container>
           <Row justify="space-between">
             <Col lg={10} md={10} sm={12} xs={12}>
-              <h4 className="text-2xl capitalize text-black">{t('Contact')}</h4>
+              <h4 className="text-2xl capitalize text-black">Contact</h4>
               <p className="text-black text-sm w-7/12">
-                {t(
-                  `Do you have any questions? Contact Us at psse.cpu@cpu.edu.ph`
-                )}
+                Do you have any questions? Contact Us at psse.cpu@cpu.edu.ph
               </p>
             </Col>
             <Col lg={10} md={10} sm={12} xs={12}>
-              <h4 className="text-2xl capitalize text-black">{t('Address')}</h4>
+              <h4 className="text-2xl capitalize text-black">Address</h4>
               <p className="text-black text-sm w-7/12">Lopez Jaena St.</p>
               <p className="text-black text-sm w-7/12">Jaro, Iloilo City</p>
               <p className="text-black text-sm w-7/12">Philippines</p>
@@ -67,4 +64,4 @@ const Footer = ({ t }: any) => {
   );
 };
 
-export default withTranslation()(Footer);
+export default Footer;
