@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 
 const App: React.FC = () => {
   const [logStatus, setLogStatus] = useState(false);
@@ -30,6 +31,12 @@ const App: React.FC = () => {
   return (
     <div className="flex flex-col items-center justify-center w-full">
       <h1>Home Page</h1>
+      <Link
+        to="/admin"
+        className="flex flex-row bg-shade-light hover:bg-neutral-300 active:bg-secondary-100"
+      >
+        <h1>Admin</h1>
+      </Link>
       {logStatus ? (
         <h1>Hello, {user.firstName}</h1>
       ) : (
