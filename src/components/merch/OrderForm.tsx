@@ -20,15 +20,29 @@ const OrderForm: React.FC<OrderProps> = ({ item, submit }) => {
   return (
     <Fragment>
       <div className="flex flex-col flex-1 justify-center items-center">
-        <form onSubmit={(e) => submit(e, orderReceipt)}>
-          <input type="text" value={itemName} readOnly></input>
+        <form
+          className="flex flex-col flex-1 justify-center items-center"
+          onSubmit={(e) => submit(e, orderReceipt)}
+        >
           <input
+            className="bg-shade-light px-6 py-3 self-end text-4xl title rounded-xl"
+            type="text"
+            value={itemName}
+            readOnly
+          />
+          <input
+            className="bg-shade-light px-6 py-3 self-end text-4xl title rounded-xl"
             type="file"
             onChange={handleFileChange}
             accept="image/*"
           ></input>
 
-          <button type="submit">Submit</button>
+          <button
+            type="submit"
+            className="bg-primary-700 px-6 py-3 self-end text-4xl title rounded-xl hover:bg-secondary-700 active:bg-secondary-500"
+          >
+            Submit
+          </button>
         </form>
       </div>
     </Fragment>
