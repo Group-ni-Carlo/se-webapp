@@ -12,8 +12,6 @@ import { AnnouncementsList } from './admin/announcements/AnnouncementsList';
 import EditAnnouncements from './admin/announcements/EditAnnouncements';
 import LoginPage from './app/Login';
 import RegisterPage from './app/Register';
-import Footer from './components/Footer/';
-import Header from './components/Header/';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
