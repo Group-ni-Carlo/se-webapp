@@ -11,16 +11,19 @@ const Login: React.FC = () => {
 
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
-    const response = await fetch(`https://sewebapp.onrender.com/login`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        email,
-        password
-      })
-    });
+    const response = await fetch(
+      `${process.env.REACT_APP_BACKEND_CONNECTION}/login`,
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          email,
+          password
+        })
+      }
+    );
     const { message, token } = await response.json();
     try {
       if (response.ok) {
