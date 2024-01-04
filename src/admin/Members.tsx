@@ -19,13 +19,13 @@ const Members: React.FC = () => {
   const [requests, setRequests] = useState<Member[]>([]);
 
   const fetchMemberList = async () => {
-    const res = await fetch(`http://127.0.0.1:5000/members/list`);
+    const res = await fetch(`https://sewebapp.onrender.com/members/list`);
     const data = await res.json();
     setMembers(data);
   };
 
   const fetchRequests = async () => {
-    const res = await fetch(`http://127.0.0.1:5000/members/requests`);
+    const res = await fetch(`https://sewebapp.onrender.com/members/requests`);
     const data = await res.json();
     setRequests(data);
   };
@@ -34,7 +34,7 @@ const Members: React.FC = () => {
     const member = {
       id: key
     };
-    const res = await fetch(`http://127.0.0.1:5000/members/approve`, {
+    const res = await fetch(`https://sewebapp.onrender.com/members/approve`, {
       method: 'PATCH',
       headers: {
         'Content-Type': 'application/json'
@@ -52,7 +52,7 @@ const Members: React.FC = () => {
     const member = {
       id: key
     };
-    const res = await fetch(`http://127.0.0.1:5000/members/delete`, {
+    const res = await fetch(`https://sewebapp.onrender.com/members/delete`, {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json'

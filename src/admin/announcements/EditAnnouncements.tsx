@@ -1,5 +1,4 @@
 import React, { ChangeEvent, Fragment, useState, useEffect } from 'react';
-import AdminNavBar from '../../components/admin/AdminNavBar';
 import { AnnouncementDataProps } from '../../props/announcements';
 import { useParams, useNavigate } from 'react-router-dom';
 
@@ -18,7 +17,7 @@ const EditAnnouncements = () => {
     const fetchData = async () => {
       try {
         const response = await fetch(
-          `http://localhost:3001/announcements/${id}`
+          `https://sewebapp.onrender.com/announcements/${id}`
         );
 
         if (!response.ok) {
@@ -84,7 +83,7 @@ const EditAnnouncements = () => {
 
     try {
       const response = await fetch(
-        `http://localhost:3001/admin/edit/announcements/${id}`,
+        `https://sewebapp.onrender.com/admin/edit/announcements/${id}`,
         {
           method: 'PUT',
           body: formData
@@ -114,7 +113,7 @@ const EditAnnouncements = () => {
   const handleDeleteRequest = async () => {
     try {
       const response = await fetch(
-        `http://localhost:3001/admin/delete/announcements/${id}`,
+        `https://sewebapp.onrender.com/admin/delete/announcements/${id}`,
         {
           method: 'DELETE'
         }
@@ -140,7 +139,6 @@ const EditAnnouncements = () => {
 
   return (
     <Fragment>
-      <AdminNavBar />
       <form
         className="flex flex-col items-center justify-center"
         method="post"
