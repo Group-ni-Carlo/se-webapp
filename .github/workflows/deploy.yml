@@ -1,17 +1,16 @@
 name: Deploy to Vercel
-  on:
-    push:
-      branches: main
-  jobs:
+on:
+ push:
+   branches:
+     - main
+jobs:
     deploy:
       runs-on: ubuntu-latest
-  steps:
-    - name: Checkout
-      uses: actions/checkout@v2
-    - name: Deploy to Vercel
-      uses: BetaHuhn/deploy-to-vercel-action@v1.9.12
-      with:
-      GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}
-      VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
-      VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
-      VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+      steps:
+      - uses: actions/checkout@v2
+      - uses: BetaHuhn/deploy-to-vercel-action@v1.9.12
+        with:
+          GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+          VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+          VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
