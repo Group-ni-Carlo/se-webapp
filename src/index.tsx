@@ -22,20 +22,21 @@ root.render(
     <Router>
       <Routes>
         <Route path="/" element={<Home />}></Route>
-        <Route path="/admin" element={<Admin />}></Route>
-        <Route path="/admin/members" element={<Members />}></Route>
-        <Route
-          path="/admin/announcements"
-          element={<AnnouncementsList />}
-        ></Route>
-        <Route
-          path="/admin/create/announcements"
-          element={<CreateAnnouncements />}
-        ></Route>
-        <Route
-          path="/admin/edit/announcements/:id"
-          element={<EditAnnouncements />}
-        ></Route>
+        <Route path="/admin" element={<Admin />}>
+          <Route path="/admin/members" element={<Members />}></Route>
+          <Route
+            path="/admin/announcements"
+            element={<AnnouncementsList />}
+          ></Route>
+          <Route
+            path="/admin/create/announcements"
+            element={<CreateAnnouncements />}
+          ></Route>
+          <Route
+            path="/admin/edit/announcements/:id"
+            element={<EditAnnouncements />}
+          ></Route>
+        </Route>
         <Route path="/login" element={<LoginPage />} />
         <Route path="/register" element={<RegisterPage />} />
       </Routes>
