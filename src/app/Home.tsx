@@ -9,31 +9,16 @@ import Footer from '../components/Footer/';
 import Header from '../components/Header/';
 import '../index.css';
 
+import checkIfLoggedIn from '../components/auth/checkIfLoggedIn';
+
 const Home = () => {
-  let user;
-  const token = localStorage.getItem('token');
-  const fetchUser = async () => {
-    const res = await fetch(`${process.env.REACT_APP_BACKEND_CONNECTION}/me`, {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${token}`
-      }
-    });
-    const { me } = await res.json();
-
-    if (!me) {
-      user = { message: 'Not Logged In!' };
-    } else {
-      user = me;
-    }
-
-    window.alert(JSON.stringify(user));
-  };
+  const { isLoggedIn, loading } = checkIfLoggedIn();
 
   useEffect(() => {
-    fetchUser();
-  }, []);
+    if (!loading) {
+      window.alert(`Logged in: ${isLoggedIn}`);
+    }
+  }, [isLoggedIn, loading]);
   return (
     <Fragment>
       <Header />
