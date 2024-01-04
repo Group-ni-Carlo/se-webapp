@@ -8,7 +8,7 @@ const checkIfLoggedIn = () => {
     const token = localStorage.getItem('token');
     const fetchUser = async () => {
       const res = await fetch(
-        `${process.env.REACT_APP_BACKEND_CONNECTION}/me`,
+        `${process.env.REACT_APP_BACKEND_CONNECTION}/user/profile`,
         {
           method: 'GET',
           headers: {
