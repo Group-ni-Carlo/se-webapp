@@ -83,7 +83,7 @@ const EditAnnouncements = () => {
 
     try {
       const response = await fetch(
-        `${process.env.REACT_APP_BACKEND_CONNECTION}/admin/edit/announcements/${id}`,
+        `${process.env.REACT_APP_BACKEND_CONNECTION}/admin/announcements/edit/${id}`,
         {
           method: 'PUT',
           body: formData
@@ -113,7 +113,7 @@ const EditAnnouncements = () => {
   const handleDeleteRequest = async () => {
     try {
       const response = await fetch(
-        `${process.env.REACT_APP_BACKEND_CONNECTION}/admin/delete/announcements/${id}`,
+        `${process.env.REACT_APP_BACKEND_CONNECTION}/admin/announcements/delete/${id}`,
         {
           method: 'DELETE'
         }
