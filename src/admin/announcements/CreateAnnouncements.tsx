@@ -54,7 +54,7 @@ const CreateAnnouncements = () => {
 
     try {
       const response = await fetch(
-        `${process.env.REACT_APP_BACKEND_CONNECTION}/admin/create/announcements`,
+        `${process.env.REACT_APP_BACKEND_CONNECTION}/admin/announcements/create`,
         {
           method: 'POST',
           body: formData

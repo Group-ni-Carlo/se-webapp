@@ -12,7 +12,7 @@ export const AnnouncementsList = () => {
     const fetchData = async () => {
       try {
         const response = await fetch(
-          `${process.env.REACT_APP_BACKEND_CONNECTION}/announcements`
+          `${process.env.REACT_APP_BACKEND_CONNECTION}/announcements/`
         );
 
         if (!response.ok) {
