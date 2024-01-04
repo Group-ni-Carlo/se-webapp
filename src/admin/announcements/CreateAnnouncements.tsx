@@ -54,7 +54,7 @@ const CreateAnnouncements = () => {
 
     try {
       const response = await fetch(
-        'https://sewebapp.onrender.com/admin/create/announcements',
+        `${process.env.REACT_APP_BACKEND_CONNECTION}/admin/create/announcements`,
         {
           method: 'POST',
           body: formData

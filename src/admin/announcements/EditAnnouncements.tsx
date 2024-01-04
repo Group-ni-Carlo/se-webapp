@@ -17,7 +17,7 @@ const EditAnnouncements = () => {
     const fetchData = async () => {
       try {
         const response = await fetch(
-          `https://sewebapp.onrender.com/announcements/${id}`
+          `${process.env.REACT_APP_BACKEND_CONNECTION}/announcements/${id}`
         );
 
         if (!response.ok) {
@@ -83,7 +83,7 @@ const EditAnnouncements = () => {
 
     try {
       const response = await fetch(
-        `https://sewebapp.onrender.com/admin/edit/announcements/${id}`,
+        `${process.env.REACT_APP_BACKEND_CONNECTION}/admin/edit/announcements/${id}`,
         {
           method: 'PUT',
           body: formData
@@ -113,7 +113,7 @@ const EditAnnouncements = () => {
   const handleDeleteRequest = async () => {
     try {
       const response = await fetch(
-        `https://sewebapp.onrender.com/admin/delete/announcements/${id}`,
+        `${process.env.REACT_APP_BACKEND_CONNECTION}/admin/delete/announcements/${id}`,
         {
           method: 'DELETE'
         }

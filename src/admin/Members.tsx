@@ -19,13 +19,17 @@ const Members: React.FC = () => {
   const [requests, setRequests] = useState<Member[]>([]);
 
   const fetchMemberList = async () => {
-    const res = await fetch(`https://sewebapp.onrender.com/members/list`);
+    const res = await fetch(
+      `${process.env.REACT_APP_BACKEND_CONNECTION}/members/list`
+    );
     const data = await res.json();
     setMembers(data);
   };
 
   const fetchRequests = async () => {
-    const res = await fetch(`https://sewebapp.onrender.com/members/requests`);
+    const res = await fetch(
+      `${process.env.REACT_APP_BACKEND_CONNECTION}/members/requests`
+    );
     const data = await res.json();
     setRequests(data);
   };

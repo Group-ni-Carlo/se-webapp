@@ -10,9 +10,10 @@ import Header from '../components/Header/';
 import '../index.css';
 
 const Home = () => {
+  let user;
   const token = localStorage.getItem('token');
   const fetchUser = async () => {
-    const res = await fetch('https://sewebapp.onrender.com/me', {
+    const res = await fetch(`${process.env.REACT_APP_BACKEND_CONNECTION}/me`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
@@ -21,12 +22,17 @@ const Home = () => {
     });
     const { me } = await res.json();
 
-    window.alert(JSON.stringify(me));
+    if (!me) {
+      user = { message: 'Not Logged In!' };
+    } else {
+      user = me;
+    }
+
+    window.alert(JSON.stringify(user));
   };
 
   useEffect(() => {
     fetchUser();
-    window.alert('Hello');
   }, []);
   return (
     <Fragment>
