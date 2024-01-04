@@ -1,6 +1,5 @@
 import React, { Fragment, useState, useEffect } from 'react';
 import AnnouncementCard from '../../components/admin/announcements/AnnouncementCard';
-import AdminNavBar from '../../components/admin/AdminNavBar';
 import { Link } from 'react-router-dom';
 import { AnnouncementDataProps } from '../../props/announcements';
 
@@ -12,7 +11,9 @@ export const AnnouncementsList = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch('http://localhost:3001/announcements');
+        const response = await fetch(
+          'https://sewebapp.onrender.com/announcements'
+        );
 
         if (!response.ok) {
           throw new Error('Network response was not ok');
@@ -31,7 +32,6 @@ export const AnnouncementsList = () => {
 
   return (
     <Fragment>
-      <AdminNavBar />
       <Link to="/admin/create/announcements" className="flex flex-row my-4">
         <h1 className="mx-auto p-4 hover:bg-neutral-300 active:bg-secondary-100">
           Create Announcements

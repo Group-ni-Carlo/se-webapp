@@ -1,5 +1,4 @@
 import React, { ChangeEvent, Fragment, useState } from 'react';
-import AdminNavBar from '../../components/admin/AdminNavBar';
 import { useNavigate } from 'react-router-dom';
 
 const CreateAnnouncements = () => {
@@ -55,7 +54,7 @@ const CreateAnnouncements = () => {
 
     try {
       const response = await fetch(
-        'http://localhost:3001/admin/create/announcements',
+        'https://sewebapp.onrender.com/admin/create/announcements',
         {
           method: 'POST',
           body: formData
@@ -84,7 +83,6 @@ const CreateAnnouncements = () => {
 
   return (
     <Fragment>
-      <AdminNavBar />
       <form
         className="flex flex-col items-center justify-center"
         method="post"
