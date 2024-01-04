@@ -1,7 +1,16 @@
-import React from 'react';
+import React, { Fragment } from 'react';
+import Product from '../components/merchandise/MerchPage';
+import { Outlet } from 'react-router-dom';
 
-const Merchandise: React.FC = () => {
-  return <div>Merchandise</div>;
+const App: React.FC = () => {
+  return (
+    <Fragment>
+      <div>
+        <Product />
+      </div>
+      <Outlet />
+    </Fragment>
+  );
 };
 
-export default Merchandise;
+export default App;

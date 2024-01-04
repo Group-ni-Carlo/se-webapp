@@ -58,7 +58,7 @@ const AdminNavBar: React.FC = () => {
               <h1>Announcements</h1>
             </Link>
             <Link
-              to="/admin/merchandise"
+              to="/admin/Merchandise"
               className="flex flex-row gap-x-2 pl-10 py-2 bg-shade-light hover:bg-neutral-300 active:bg-secondary-100"
               onClick={() => setToggleMenu(!toggleMenu)}
             >
