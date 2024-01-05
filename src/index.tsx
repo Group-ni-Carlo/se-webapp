@@ -7,6 +7,9 @@ import reportWebVitals from './reportWebVitals';
 import Home from './app/Home';
 import Admin from './admin/Admin';
 import Members from './admin/Members';
+import CreateAnnouncements from './admin/announcements/CreateAnnouncements';
+import { AnnouncementsList } from './admin/announcements/AnnouncementsList';
+import EditAnnouncements from './admin/announcements/EditAnnouncements';
 import LoginPage from './app/Login';
 import RegisterPage from './app/Register';
 import Merch from './app/Merch';
@@ -15,13 +18,26 @@ import Order from './app/Order';
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
+
 root.render(
   <React.StrictMode>
     <Router>
       <Routes>
         <Route path="/" element={<Home />}></Route>
         <Route path="/admin" element={<Admin />}>
-          <Route path="/admin/members" element={<Members />} />
+          <Route path="/admin/members" element={<Members />}></Route>
+          <Route
+            path="/admin/announcements"
+            element={<AnnouncementsList />}
+          ></Route>
+          <Route
+            path="/admin/create/announcements"
+            element={<CreateAnnouncements />}
+          ></Route>
+          <Route
+            path="/admin/edit/announcements/:id"
+            element={<EditAnnouncements />}
+          ></Route>
         </Route>
         <Route path="/merch" element={<Merch />}></Route>
         <Route path="/order" element={<Order />} />

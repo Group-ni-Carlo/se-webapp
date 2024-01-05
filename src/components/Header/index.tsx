@@ -1,9 +1,7 @@
 import { useState } from 'react';
 import { Row, Col, Drawer } from 'antd';
-import { withTranslation } from 'react-i18next';
 import Container from '../../common/Container';
 import { SvgIcon } from '../../common/SvgIcon';
-import { Button } from '../../common/Button';
 import {
   HeaderSection,
   LogoContainer,
@@ -16,7 +14,7 @@ import {
   Span
 } from './styles';
 
-const Header = ({ t }: any) => {
+const Header = () => {
   const [visible, setVisibility] = useState(false);
 
   const showDrawer = () => {
@@ -37,22 +35,14 @@ const Header = ({ t }: any) => {
     };
     return (
       <>
-        <CustomNavLinkSmall onClick={() => scrollTo('about')}>
-          <Span>{t('Events')}</Span>
+        <CustomNavLinkSmall onClick={() => scrollTo('events')}>
+          <Span>{'Events'}</Span>
         </CustomNavLinkSmall>
-        <CustomNavLinkSmall onClick={() => scrollTo('mission')}>
-          <Span>{t('Partners & Sponsors')}</Span>
+        <CustomNavLinkSmall onClick={() => scrollTo('partners')}>
+          <Span>{'Partners & Sponsors'}</Span>
         </CustomNavLinkSmall>
-        <CustomNavLinkSmall onClick={() => scrollTo('product')}>
-          <Span>{t('Organizations')}</Span>
-        </CustomNavLinkSmall>
-        <CustomNavLinkSmall
-          style={{ width: '180px' }}
-          onClick={() => scrollTo('contact')}
-        >
-          <Span>
-            <Button>{t('Contact')}</Button>
-          </Span>
+        <CustomNavLinkSmall onClick={() => scrollTo('organizations')}>
+          <Span>{'Organizations'}</Span>
         </CustomNavLinkSmall>
       </>
     );
@@ -90,4 +80,4 @@ const Header = ({ t }: any) => {
   );
 };
 
-export default withTranslation()(Header);
+export default Header;

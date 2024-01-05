@@ -17,19 +17,6 @@ export interface SvgIconProps {
   height: string;
 }
 
-export interface InputProps {
-  name: string;
-  placeholder: string;
-  t: any;
-  type?: string;
-  value?: string;
-  onChange: (
-    event:
-      | React.ChangeEvent<HTMLInputElement>
-      | React.ChangeEvent<HTMLTextAreaElement>
-  ) => void;
-}
-
 export interface validateProps {
   name: string;
   message: string;
