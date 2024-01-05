@@ -10,6 +10,9 @@ import Members from './admin/Members';
 import CreateAnnouncements from './admin/announcements/CreateAnnouncements';
 import { AnnouncementsList } from './admin/announcements/AnnouncementsList';
 import EditAnnouncements from './admin/announcements/EditAnnouncements';
+import CreatePartners from './admin/partners/CreatePartners';
+import { PartnersList } from './admin/partners/PartnersList';
+import EditPartners from './admin/partners/EditPartners';
 import LoginPage from './app/Login';
 import RegisterPage from './app/Register';
 import Merch from './app/Merch';
@@ -42,6 +45,15 @@ root.render(
           <Route
             path="/admin/edit/announcements/:id"
             element={<EditAnnouncements />}
+          ></Route>
+          <Route path="/admin/partners" element={<PartnersList />}></Route>
+          <Route
+            path="/admin/partners/create"
+            element={<CreatePartners />}
+          ></Route>
+          <Route
+            path="/admin/partners/edit/:id"
+            element={<EditPartners />}
           ></Route>
         </Route>
         <Route path="/login" element={<LoginPage />} />
