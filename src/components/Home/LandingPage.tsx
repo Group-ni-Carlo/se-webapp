@@ -2,7 +2,6 @@ import React, { Fragment } from 'react';
 
 import Container from '../../common/Container';
 import Events from '../../components/RecentEvents/index';
-import Organizations from '../../components/Organizations/index';
 import Partners from '../../components/Partners/index';
 import IntroContent from '../../components/Intro/index';
 import AboutUs from '../../components/AboutUs/index';
@@ -16,7 +15,6 @@ const LandingPage = () => {
         <AboutUs />
         <Events />
         <Partners />
-        <Organizations />
       </Container>
       <Footer />
     </Fragment>

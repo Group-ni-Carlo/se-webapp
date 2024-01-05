@@ -63,9 +63,6 @@ const Header = (props: {
         <CustomNavLinkSmall onClick={() => scrollTo('partners')}>
           <Span>{'Partners & Sponsors'}</Span>
         </CustomNavLinkSmall>
-        <CustomNavLinkSmall onClick={() => scrollTo('organizations')}>
-          <Span>{'Organizations'}</Span>
-        </CustomNavLinkSmall>
         {props.isAdmin ? (
           <CustomNavLinkSmall onClick={() => navigate('/admin')}>
             <Span>{'Admin'}</Span>

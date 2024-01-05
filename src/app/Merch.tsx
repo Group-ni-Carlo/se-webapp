@@ -1,6 +1,6 @@
 import React, { Fragment, useState } from 'react';
 
-import IndivMerch from '../components/Merch/IndivMerch';
+import IndivMerch from '../components/merch/IndivMerch';
 
 const Merch = () => {
   const [merchClick, setMerchClick] = useState(false);

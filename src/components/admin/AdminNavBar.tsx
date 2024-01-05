@@ -70,7 +70,7 @@ const AdminNavBar: React.FC = () => {
               <h1>Merchandise</h1>
             </Link>
             <Link
-              to="/admin/sponsors"
+              to="/admin/partners"
               className="flex flex-row gap-x-2 pl-10 py-2 bg-shade-light hover:bg-neutral-300 active:bg-secondary-100"
               onClick={() => setToggleMenu(!toggleMenu)}
             >
