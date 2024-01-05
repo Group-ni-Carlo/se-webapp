@@ -268,6 +268,8 @@ const Product: React.FC = () => {
               setShowModal(false);
             }}
             product={selectedProduct}
+            handleUpdate={handleUpdate}
+            handleDelete={handleDelete}
           />
         )}
       </div>
@@ -287,9 +289,18 @@ interface ProductProps {
 interface ModalProps {
   product: ProductProps;
   onClose: () => void;
+  onClick: () => void;
+  handleUpdate: (id: number, updatedProduct: any) => Promise<void>;
+  handleDelete: (id: number) => Promise<void>;
 }
 
-const Modal: React.FC<ModalProps> = ({ product, onClose }) => {
+const Modal: React.FC<ModalProps> = ({
+  product,
+  onClose,
+  onClick,
+  handleDelete,
+  handleUpdate
+}) => {
   return (
     <div
       className="fixed z-10 inset-0 overflow-y-auto"
@@ -321,7 +332,7 @@ const Modal: React.FC<ModalProps> = ({ product, onClose }) => {
                 <div className="mt-2">
                   <p className="text-sm text-gray-500">{product.description}</p>
                   <p className="text-sm text-gray-500">
-                    Price: ${product.price}
+                    Price: ₱{product.price}
                   </p>
                   <p className="text-sm text-gray-500">
                     In Stock: {product.stock}
@@ -336,13 +347,31 @@ const Modal: React.FC<ModalProps> = ({ product, onClose }) => {
             </div>
           </div>
           <div className="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
-            <button
-              type="button"
-              className="mt-3 w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-blue-600 text-base font-medium text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm"
-              onClick={onClose}
-            >
-              Close
-            </button>
+            <div className="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
+              <button
+                type="button"
+                className="mt-3 w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-blue-600 text-base font-medium text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm"
+                onClick={onClose}
+              >
+                Close
+              </button>
+
+              {/* Edit and Delete buttons */}
+              <button
+                type="button"
+                className="mt-3 w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-yellow-500 text-base font-medium text-white hover:bg-yellow-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-300 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm"
+                onClick={(e) => handleUpdate(e, product.id)}
+              >
+                Edit
+              </button>
+              <button
+                type="button"
+                className="mt-3 w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-red-500 text-base font-medium text-white hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-300 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm"
+                onClick={(e) => handleDelete(e, product.id)}
+              >
+                Delete
+              </button>
+            </div>
           </div>
         </div>
       </div>
