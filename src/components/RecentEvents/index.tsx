@@ -11,9 +11,9 @@ const Events = () => {
         <Row justify="center" align="middle">
           <Col>
             <div className="relative md:pt-32">
-              <h6 className="text-white uppercase text-4xl leading-1rem py-8 font-montserrat">
+              <h5 className="text-white leading-1rem py-8 font-montserrat">
                 Recent Events
-              </h6>
+              </h5>
               <p className="my-24">
                 Relevant information about the organization and its activities.
               </p>
@@ -21,7 +21,7 @@ const Events = () => {
                 <Row justify="center" align="middle">
                   <Col span={11}>
                     <img src={logo} width="100px" height="100px" />
-                    <h6 className="text-white uppercase text-base leading-1rem py-4 font-montserrat">
+                    <h6 className="text-white uppercase leading-1rem py-4 font-montserrat">
                       Lorem Ipsum
                     </h6>
                     <p className="text-sm pb-8">
@@ -29,7 +29,7 @@ const Events = () => {
                       Praesent ut est et est tristique feugiat.
                     </p>
                     <img src={logo} width="100px" height="100px" />
-                    <h6 className="text-white uppercase text-base leading-1rem py-4 font-montserrat">
+                    <h6 className="text-white uppercase leading-1rem py-4 font-montserrat">
                       Lorem Ipsum
                     </h6>
                     <p className="text-sm pb-8">
@@ -39,7 +39,7 @@ const Events = () => {
                   </Col>
                   <Col span={11}>
                     <img src={logo} width="100px" height="100px" />
-                    <h6 className="text-white uppercase text-base leading-1rem py-4 font-montserrat">
+                    <h6 className="text-white uppercase leading-1rem py-4 font-montserrat">
                       Lorem Ipsum
                     </h6>
                     <p className="text-sm pb-8">
@@ -47,7 +47,7 @@ const Events = () => {
                       Praesent ut est et est tristique feugiat.
                     </p>
                     <img src={logo} width="100px" height="100px" />
-                    <h6 className="text-white uppercase text-base leading-1rem py-4 font-montserrat">
+                    <h6 className="text-white uppercase leading-1rem py-4 font-montserrat">
                       Lorem Ipsum
                     </h6>
                     <p className="text-sm pb-8">

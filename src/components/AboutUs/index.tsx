@@ -13,7 +13,7 @@ const AboutUs = () => {
           className="max-w-570px md:max-w-full"
         >
           <Col lg={24} md={24} sm={24} xs={24}>
-            <h6>About us</h6>
+            <h5>About us</h5>
             <p className="py-3">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut nisi
               neque, ultrices hendrerit lobortis a, condimentum sit amet magna.

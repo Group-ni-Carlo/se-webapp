@@ -11,7 +11,7 @@ const IntroContent = () => {
         <Row justify="space-between" align="middle">
           <Col lg={11} md={11} sm={11} xs={24}>
             <div className="relative max-w-lg lg:pb-16">
-              <h6 className="mb-4">Welcome to Software Engineering</h6>
+              <h5 className="mb-4">Welcome to Software Engineering</h5>
               <p className="mb-8">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                 Praesent ut est et est tristique feugiat. Maecenas pharetra

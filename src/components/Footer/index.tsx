@@ -29,13 +29,13 @@ const Footer = () => {
         <Container>
           <Row justify="space-between">
             <Col lg={10} md={10} sm={12} xs={12}>
-              <h4 className="text-2xl capitalize text-black">Contact</h4>
+              <h6 className="text-2xl capitalize text-black">Contact</h6>
               <p className="text-black text-sm w-7/12">
                 Do you have any questions? Contact Us at psse.cpu@cpu.edu.ph
               </p>
             </Col>
             <Col lg={10} md={10} sm={12} xs={12}>
-              <h4 className="text-2xl capitalize text-black">Address</h4>
+              <h6 className="text-2xl capitalize text-black">Address</h6>
               <p className="text-black text-sm w-7/12">Lopez Jaena St.</p>
               <p className="text-black text-sm w-7/12">Jaro, Iloilo City</p>
               <p className="text-black text-sm w-7/12">Philippines</p>
@@ -48,7 +48,7 @@ const Footer = () => {
           <Row justify="center" align="middle" className="pt-12">
             <div className="flex justify-center items-center space-x-20 max-w-md w-full text-center transition-all duration-100">
               <SocialLink
-                href="https://github.com/Group-ni-Carlo/se-webapp-frontend"
+                href="https://github.com/Group-ni-Carlo"
                 src="github.svg"
               />
               <SocialLink
