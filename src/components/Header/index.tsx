@@ -13,9 +13,11 @@ import {
   Outline,
   Span
 } from './styles';
+import { useNavigate } from 'react-router-dom';
 
 const Header = () => {
   const [visible, setVisibility] = useState(false);
+  const navigate = useNavigate();
 
   const showDrawer = () => {
     setVisibility(!visible);
@@ -23,6 +25,12 @@ const Header = () => {
 
   const onClose = () => {
     setVisibility(!visible);
+  };
+
+  const navigateToMerch = () => {
+    setTimeout(() => {
+      navigate('/merch');
+    }, 1000);
   };
 
   const MenuItem = () => {
@@ -37,6 +45,9 @@ const Header = () => {
       <>
         <CustomNavLinkSmall onClick={() => scrollTo('events')}>
           <Span>{'Events'}</Span>
+        </CustomNavLinkSmall>
+        <CustomNavLinkSmall onClick={() => navigateToMerch()}>
+          <Span>{'Merch'}</Span>
         </CustomNavLinkSmall>
         <CustomNavLinkSmall onClick={() => scrollTo('partners')}>
           <Span>{'Partners & Sponsors'}</Span>
