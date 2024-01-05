@@ -1,6 +1,6 @@
 import React, { Fragment, useState, useEffect } from 'react';
 import { Outlet, useNavigate } from 'react-router-dom';
-import Login from '../components/Login/Login';
+import Login from '../components/login/login';
 
 import checkIfLoggedIn from '../components/auth/checkIfLoggedIn';
 

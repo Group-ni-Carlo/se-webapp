@@ -1,5 +1,5 @@
 import React, { Fragment, useEffect } from 'react';
-import Register from '../components/Register/Register';
+import Register from '../components/register/register';
 import { Outlet, useNavigate } from 'react-router-dom';
 
 import checkIfLoggedIn from '../components/auth/checkIfLoggedIn';
