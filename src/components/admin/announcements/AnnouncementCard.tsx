@@ -11,7 +11,7 @@ const AnnouncementCard: React.FC<AnnouncementDataProps> = ({
   console.log('React Image Src:', imageSrc);
 
   return (
-    <Link to={`/admin/edit/announcements/${id}`}>
+    <Link to={`/admin/announcements/edit/${id}`}>
       <div className="shadow-md  rounded-lg mr-4">
         <div className="w-[356px] h-[356px]">
           <img

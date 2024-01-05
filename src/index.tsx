@@ -39,11 +39,11 @@ root.render(
             element={<AnnouncementsList />}
           ></Route>
           <Route
-            path="/admin/create/announcements"
+            path="/admin/announcements/create"
             element={<CreateAnnouncements />}
           ></Route>
           <Route
-            path="/admin/edit/announcements/:id"
+            path="/admin/announcements/edit/:id"
             element={<EditAnnouncements />}
           ></Route>
           <Route path="/admin/partners" element={<PartnersList />}></Route>
