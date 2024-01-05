@@ -37,7 +37,7 @@ export const AnnouncementsList = () => {
 
   return (
     <Fragment>
-      <Link to="/admin/create/announcements" className="flex flex-row my-4">
+      <Link to="/admin/announcements/create" className="flex flex-row my-4">
         <h1 className="mx-auto p-4 hover:bg-neutral-300 active:bg-secondary-100">
           Create Announcements
         </h1>

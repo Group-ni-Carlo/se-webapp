@@ -1,8 +1,9 @@
 import React, { Fragment, useEffect } from 'react';
-import Register from '../components/Register/Register';
+
 import { Outlet, useNavigate } from 'react-router-dom';
 
 import checkIfLoggedIn from '../components/auth/checkIfLoggedIn';
+import Register from '../components/Register/Register';
 
 const RegisterPage: React.FC = () => {
   const navigate = useNavigate();
