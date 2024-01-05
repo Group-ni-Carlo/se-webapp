@@ -16,7 +16,6 @@ const LandingPage = () => {
         <AboutUs />
         <Events />
         <Partners />
-        <Organizations />
       </Container>
       <Footer />
     </Fragment>
