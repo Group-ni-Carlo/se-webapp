@@ -17,7 +17,9 @@ const Partners = () => {
                 Partners and Sponsors
               </h6>
               <p className="my-12">
-                Relevant information about the organization and its activities
+                In our commitment to collaboration and mutual growth, we are
+                proud to acknowledge and appreciate the contributions of our
+                valued partners and sponsors.
               </p>
               <Carousel className="mx-auto w-3/4" showArrows infiniteLoop>
                 <div>
