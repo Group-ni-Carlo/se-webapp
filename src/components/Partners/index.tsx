@@ -13,9 +13,9 @@ const Partners = () => {
         <Row justify="center" align="middle">
           <Col>
             <div className="relative md:pt-32">
-              <h6 className="text-white uppercase text-4xl leading-1rem py-8 font-montserrat">
+              <h5 className="text-white leading-1rem py-8 font-montserrat">
                 Partners and Sponsors
-              </h6>
+              </h5>
               <p className="my-12">
                 In our commitment to collaboration and mutual growth, we are
                 proud to acknowledge and appreciate the contributions of our
