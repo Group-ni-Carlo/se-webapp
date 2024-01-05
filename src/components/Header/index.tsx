@@ -54,9 +54,6 @@ const Header = (props: {
     };
     return (
       <>
-        <CustomNavLinkSmall onClick={() => scrollTo('events')}>
-          <Span>{'Events'}</Span>
-        </CustomNavLinkSmall>
         <CustomNavLinkSmall onClick={() => navigate('/merch')}>
           <Span>{'Merch'}</Span>
         </CustomNavLinkSmall>
@@ -69,6 +66,13 @@ const Header = (props: {
           </CustomNavLinkSmall>
         ) : (
           <span></span>
+        )}
+        {!props.status ? (
+          <></>
+        ) : (
+          <CustomNavLinkSmall onClick={props.linkToProfie}>
+            <Span>Profile</Span>
+          </CustomNavLinkSmall>
         )}
         <CustomNavLinkSmall onClick={() => handleLogStatus(props.status)}>
           <Span>{props.status ? 'Log Out' : 'Log In'}</Span>

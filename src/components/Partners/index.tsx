@@ -5,6 +5,8 @@ import { Carousel } from 'react-responsive-carousel';
 import { headers } from '../../utils/headers';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 
+import PartnersList from '../Home/PartnersList';
+
 type Partner = {
   id: number;
   logoSrc: string;
@@ -22,8 +24,8 @@ const Partners = () => {
       `${process.env.REACT_APP_BACKEND_CONNECTION}/partners`,
       { headers }
     );
-    const { rows } = await res.json();
-    setPartners(rows);
+    const data = await res.json();
+    setPartners(data);
   };
 
   useEffect(() => {
@@ -46,13 +48,9 @@ const Partners = () => {
                   valued partners and sponsors.
                 </p>
                 <Carousel className="mx-auto w-3/4" showArrows infiniteLoop>
-                  {partners.map((partner) => {
-                    return (
-                      <div>
-                        <img src={partner.logoSrc} />
-                      </div>
-                    );
-                  })}
+                  {partners.map((partner) => (
+                    <PartnersList key={partner.id} imageSrc={partner.logoSrc} />
+                  ))}
                 </Carousel>
               </div>
             </Col>

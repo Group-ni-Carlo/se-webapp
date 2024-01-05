@@ -16,7 +16,6 @@ import EditPartners from './admin/partners/EditPartners';
 import LoginPage from './app/Login';
 import RegisterPage from './app/Register';
 import Merch from './app/Merch';
-import Order from './app/Order';
 import LandingPage from './components/Home/LandingPage';
 
 const root = ReactDOM.createRoot(
@@ -30,7 +29,6 @@ root.render(
         <Route path="/" element={<Home />}>
           <Route path="/" element={<LandingPage />}></Route>
           <Route path="/merch" element={<Merch />}></Route>
-          <Route path="/order" element={<Order />} />
         </Route>
         <Route path="/admin" element={<Admin />}>
           <Route path="/admin/members" element={<Members />}></Route>

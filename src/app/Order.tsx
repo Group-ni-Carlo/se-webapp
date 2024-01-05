@@ -1,7 +1,7 @@
 import React, { Fragment, useEffect } from 'react';
 import { useSearchParams, useLocation } from 'react-router-dom';
 
-import OrderForm from '../components/merch/OrderForm';
+import OrderForm from '../components/Merch/OrderForm';
 import { headers } from '../utils/headers';
 
 const Order: React.FC = () => {
