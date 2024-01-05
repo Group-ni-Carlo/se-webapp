@@ -12,6 +12,8 @@ import { AnnouncementsList } from './admin/announcements/AnnouncementsList';
 import EditAnnouncements from './admin/announcements/EditAnnouncements';
 import LoginPage from './app/Login';
 import RegisterPage from './app/Register';
+import Merch from './app/Merch';
+import Order from './app/Order';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -37,6 +39,8 @@ root.render(
             element={<EditAnnouncements />}
           ></Route>
         </Route>
+        <Route path="/merch" element={<Merch />}></Route>
+        <Route path="/order" element={<Order />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/register" element={<RegisterPage />} />
       </Routes>
