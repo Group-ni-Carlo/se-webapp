@@ -26,14 +26,14 @@
   font-family: 'Montserrat';
 }
 
-body,
-html,
-a {
+.home body,
+.home html,
+.home a {
   font-family: 'Montserrat', sans-serif;
-  color: #ffffff;
+  color: #000000;
 }
 
-body {
+.home body {
   margin: 0;
   padding: 0;
   border: 0;
@@ -42,85 +42,85 @@ body {
   overflow-x: hidden;
 }
 
-a:hover {
+.home a:hover {
   color: #007ea7;
 }
 
-input,
-textarea {
+.home input,
+.home textarea {
   border-radius: 4px;
   border: 0;
-  background: #003459;
+  background: #ffffff;
   transition: all 0.3s ease-in-out;
   outline: none;
   width: 100%;
   padding: 1rem 1.25rem;
 }
 
-input:focus-within,
-textarea:focus-within {
+.home input:focus-within,
+.home textarea:focus-within {
   background: none;
   box-shadow: #00a8e8 0px 0px 0px 1px;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
+.home h1,
+.home h2,
+.home h3,
+.home h4,
+.home h5,
+.home h6 {
   font-family: 'Bebas Neue', sans-serif;
-  color: #ffffff;
+  color: #000000;
   font-size: 56px;
   line-height: 1.18;
   font-weight: 700;
 }
 
 @media only screen and (max-width: 890px) {
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
+  .home h1,
+  .home h2,
+  .home h3,
+  .home h4,
+  .home h5,
+  .home h6 {
     font-size: 47px;
   }
 }
 
 @media only screen and (max-width: 414px) {
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
+  .home h1,
+  .home h2,
+  .home h3,
+  .home h4,
+  .home h5,
+  .home h6 {
     font-size: 32px;
   }
 }
 
-p,
-label {
+.home p,
+.home label {
   font-family: 'Montserrat', sans-serif;
-  color: #ffffff;
+  color: #000000;
   font-size: 21px;
   line-height: 1.41;
 }
 
-h1 {
+.home h1 {
   font-weight: 600;
 }
 
-a {
+.home a {
   text-decoration: none;
   outline: none;
   color: #00a8e8;
 }
 
-a:hover {
+.home a:hover {
   color: #007ea7;
 }
 
-*:focus {
+.home *:focus {
   outline: none;
 }
 

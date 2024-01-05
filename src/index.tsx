@@ -14,6 +14,7 @@ import LoginPage from './app/Login';
 import RegisterPage from './app/Register';
 import Merch from './app/Merch';
 import Order from './app/Order';
+import LandingPage from './components/Home/LandingPage';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -23,7 +24,11 @@ root.render(
   <React.StrictMode>
     <Router>
       <Routes>
-        <Route path="/" element={<Home />}></Route>
+        <Route path="/" element={<Home />}>
+          <Route path="/" element={<LandingPage />}></Route>
+          <Route path="/merch" element={<Merch />}></Route>
+          <Route path="/order" element={<Order />} />
+        </Route>
         <Route path="/admin" element={<Admin />}>
           <Route path="/admin/members" element={<Members />}></Route>
           <Route
@@ -39,8 +44,6 @@ root.render(
             element={<EditAnnouncements />}
           ></Route>
         </Route>
-        <Route path="/merch" element={<Merch />}></Route>
-        <Route path="/order" element={<Order />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/register" element={<RegisterPage />} />
       </Routes>
