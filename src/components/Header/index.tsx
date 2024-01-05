@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Row, Col, Drawer } from 'antd';
 import Container from '../../common/Container';
 import { SvgIcon } from '../../common/SvgIcon';
@@ -13,9 +13,24 @@ import {
   Outline,
   Span
 } from './styles';
+import { useNavigate } from 'react-router-dom';
 
-const Header = () => {
+type HeaderProps = {
+  name: string;
+  userType: string;
+  status: boolean;
+  linkToProfile: () => void;
+};
+
+const Header = (props: {
+  name: string;
+  userType: string;
+  status: boolean;
+  linkToProfie: () => void;
+}) => {
   const [visible, setVisibility] = useState(false);
+  const [isAdmin, setIsAdmin] = useState(false);
+  const navigate = useNavigate();
 
   const showDrawer = () => {
     setVisibility(!visible);
@@ -23,6 +38,28 @@ const Header = () => {
 
   const onClose = () => {
     setVisibility(!visible);
+  };
+
+  const checkUserType = (type: string) => {
+    if (!type) {
+      console.log('User not logged in');
+    } else {
+      if (type === 'admin') {
+        setIsAdmin(true);
+      }
+    }
+  };
+
+  const handleLogStatus = (status: boolean) => {
+    if (!status) {
+      setTimeout(() => {
+        navigate('/login');
+      }, 1000);
+    } else {
+      localStorage.clear();
+      window.alert('User logged out');
+      navigate(0);
+    }
   };
 
   const MenuItem = () => {
@@ -38,15 +75,32 @@ const Header = () => {
         <CustomNavLinkSmall onClick={() => scrollTo('events')}>
           <Span>{'Events'}</Span>
         </CustomNavLinkSmall>
+        <CustomNavLinkSmall onClick={() => navigate('/merch')}>
+          <Span>{'Merch'}</Span>
+        </CustomNavLinkSmall>
         <CustomNavLinkSmall onClick={() => scrollTo('partners')}>
           <Span>{'Partners & Sponsors'}</Span>
         </CustomNavLinkSmall>
         <CustomNavLinkSmall onClick={() => scrollTo('organizations')}>
           <Span>{'Organizations'}</Span>
         </CustomNavLinkSmall>
+        {isAdmin ? (
+          <CustomNavLinkSmall onClick={() => navigate('/admin')}>
+            <Span>{'Admin'}</Span>
+          </CustomNavLinkSmall>
+        ) : (
+          <span></span>
+        )}
+        <CustomNavLinkSmall onClick={() => handleLogStatus(props.status)}>
+          <Span>{props.status ? 'Log Out' : 'Log In'}</Span>
+        </CustomNavLinkSmall>
       </>
     );
   };
+
+  useEffect(() => {
+    checkUserType(props.userType);
+  }, []);
 
   return (
     <HeaderSection>
@@ -66,7 +120,11 @@ const Header = () => {
           <Col style={{ marginBottom: '2.5rem' }}>
             <Label onClick={onClose}>
               <Col span={12}>
-                <Menu>Menu</Menu>
+                {!props.status ? (
+                  <Menu>Menu</Menu>
+                ) : (
+                  <Menu onClick={props.linkToProfie}>{props.name}</Menu>
+                )}
               </Col>
               <Col span={12}>
                 <Outline />

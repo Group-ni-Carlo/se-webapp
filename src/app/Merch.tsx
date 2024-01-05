@@ -8,9 +8,6 @@ const Merch = () => {
   return (
     <Fragment>
       <div className="flex flex-col gap-12 w-full justify-center items-center">
-        <div>
-          <span className="title text-4xl">Merch Page</span>
-        </div>
         <div className="flex flex-row w-fit bg-primary-700">
           <div
             className="justify-end"

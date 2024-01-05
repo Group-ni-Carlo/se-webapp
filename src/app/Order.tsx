@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useEffect } from 'react';
 import { useSearchParams, useLocation } from 'react-router-dom';
 
 import OrderForm from '../components/merch/OrderForm';
@@ -32,11 +32,12 @@ const Order: React.FC = () => {
     const data = res.json();
   };
 
+  useEffect(() => {
+    document.body.classList.remove('home');
+  });
+
   return (
     <Fragment>
-      <div className="flex flex-row flex-1 justify-center items-center">
-        <span className="text-4xl title">Order Page</span>
-      </div>
       <OrderForm item={orderedItem} submit={submit} />
     </Fragment>
   );

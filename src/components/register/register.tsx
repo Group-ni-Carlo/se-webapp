@@ -20,19 +20,22 @@ const Register: React.FC = () => {
     }
 
     try {
-      const response = await fetch(`https://sewebapp.onrender.com/register`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          firstName,
-          lastName,
-          username,
-          email,
-          password
-        })
-      });
+      const response = await fetch(
+        `${process.env.REACT_APP_BACKEND_CONNECTION}/register`,
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            firstName,
+            lastName,
+            username,
+            email,
+            password
+          })
+        }
+      );
 
       if (response.ok) {
         const { message } = await response.json();

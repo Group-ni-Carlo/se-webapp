@@ -1,44 +1,59 @@
-import { Fragment, useEffect } from 'react';
-import Container from '../common/Container';
-import Events from '../components/RecentEvents/index';
-import Organizations from '../components/Organizations/index';
-import Partners from '../components/Partners/index';
-import IntroContent from '../components/Intro/index';
-import AboutUs from '../components/AboutUs/index';
-import Footer from '../components/Footer/';
+import { Fragment, useState, useEffect } from 'react';
+import { useNavigate, Outlet } from 'react-router-dom';
 import Header from '../components/Header/';
 import '../index.css';
 
-const Home = () => {
-  const token = localStorage.getItem('token');
-  const fetchUser = async () => {
-    const res = await fetch('https://sewebapp.onrender.com/me', {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${token}`
-      }
-    });
-    const { me } = await res.json();
+import checkIfLoggedIn from '../components/auth/checkIfLoggedIn';
 
-    window.alert(JSON.stringify(me));
+interface UserProps {
+  id: number;
+  firstName: string;
+  lastName: string;
+  type: string;
+}
+
+const Home = () => {
+  let currentUser: UserProps;
+  const navigate = useNavigate();
+  const { user, isLoggedIn, loading } = checkIfLoggedIn();
+
+  const redirectToProfile = () => {
+    navigate(`/user/${currentUser.id}`);
   };
 
+  if (!user) {
+    currentUser = {
+      id: 0,
+      firstName: '',
+      lastName: '',
+      type: ''
+    };
+  } else {
+    currentUser = {
+      id: user.id,
+      firstName: user.first_name,
+      lastName: user.last_name,
+      type: user.type
+    };
+  }
+
   useEffect(() => {
-    fetchUser();
-    window.alert('Hello');
-  }, []);
+    if (!loading) {
+      window.alert(`Logged in: ${isLoggedIn}`);
+    }
+  }, [isLoggedIn, loading]);
+
   return (
     <Fragment>
-      <Header />
-      <Container>
-        <IntroContent />
-        <AboutUs />
-        <Events />
-        <Partners />
-        <Organizations />
-      </Container>
-      <Footer />
+      <span className="home">
+        <Header
+          name={currentUser.firstName}
+          userType={currentUser.type}
+          status={isLoggedIn}
+          linkToProfie={() => redirectToProfile()}
+        />
+        <Outlet />
+      </span>
     </Fragment>
   );
 };
