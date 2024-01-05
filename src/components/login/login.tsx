@@ -34,7 +34,6 @@ const Login: React.FC = () => {
           navigate('/');
         }, 2000);
       } else {
-        const { message } = await response.json();
         window.alert(message);
       }
     } catch (err) {
