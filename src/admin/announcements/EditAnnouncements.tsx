@@ -2,6 +2,8 @@ import React, { ChangeEvent, Fragment, useState, useEffect } from 'react';
 import { AnnouncementDataProps } from '../../props/announcements';
 import { useParams, useNavigate } from 'react-router-dom';
 
+import { headers } from '../../utils/headers';
+
 const EditAnnouncements = () => {
   const [imageFile, setImageFile] = useState<File | null>(null);
   const [imageSrc, setImageSrc] = useState<string | null>(null);
@@ -17,7 +19,10 @@ const EditAnnouncements = () => {
     const fetchData = async () => {
       try {
         const response = await fetch(
-          `${process.env.REACT_APP_BACKEND_CONNECTION}/announcements/${id}`
+          `${process.env.REACT_APP_BACKEND_CONNECTION}/announcements/${id}`,
+          {
+            headers
+          }
         );
 
         if (!response.ok) {
@@ -86,7 +91,8 @@ const EditAnnouncements = () => {
         `${process.env.REACT_APP_BACKEND_CONNECTION}/admin/announcements/edit/${id}`,
         {
           method: 'PUT',
-          body: formData
+          body: formData,
+          headers
         }
       );
 
@@ -115,7 +121,8 @@ const EditAnnouncements = () => {
       const response = await fetch(
         `${process.env.REACT_APP_BACKEND_CONNECTION}/admin/announcements/delete/${id}`,
         {
-          method: 'DELETE'
+          method: 'DELETE',
+          headers
         }
       );
 

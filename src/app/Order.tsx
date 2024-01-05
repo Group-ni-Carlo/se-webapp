@@ -1,7 +1,8 @@
 import React, { Fragment, useEffect } from 'react';
 import { useSearchParams, useLocation } from 'react-router-dom';
 
-import OrderForm from '../components/merch/OrderForm';
+import OrderForm from '../components/Merch/OrderForm';
+import { headers } from '../utils/headers';
 
 const Order: React.FC = () => {
   let orderedItem: string;
@@ -20,9 +21,7 @@ const Order: React.FC = () => {
 
     const uploadOptions = {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      }
+      headers
     };
 
     const res = await fetch(

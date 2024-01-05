@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { Row, Col, Drawer } from 'antd';
 import Container from '../../common/Container';
 import { SvgIcon } from '../../common/SvgIcon';
@@ -15,21 +15,13 @@ import {
 } from './styles';
 import { useNavigate } from 'react-router-dom';
 
-type HeaderProps = {
-  name: string;
-  userType: string;
-  status: boolean;
-  linkToProfile: () => void;
-};
-
 const Header = (props: {
   name: string;
-  userType: string;
+  isAdmin: boolean;
   status: boolean;
   linkToProfie: () => void;
 }) => {
   const [visible, setVisibility] = useState(false);
-  const [isAdmin, setIsAdmin] = useState(false);
   const navigate = useNavigate();
 
   const showDrawer = () => {
@@ -38,16 +30,6 @@ const Header = (props: {
 
   const onClose = () => {
     setVisibility(!visible);
-  };
-
-  const checkUserType = (type: string) => {
-    if (!type) {
-      console.log('User not logged in');
-    } else {
-      if (type === 'admin') {
-        setIsAdmin(true);
-      }
-    }
   };
 
   const handleLogStatus = (status: boolean) => {
@@ -84,7 +66,7 @@ const Header = (props: {
         <CustomNavLinkSmall onClick={() => scrollTo('organizations')}>
           <Span>{'Organizations'}</Span>
         </CustomNavLinkSmall>
-        {isAdmin ? (
+        {props.isAdmin ? (
           <CustomNavLinkSmall onClick={() => navigate('/admin')}>
             <Span>{'Admin'}</Span>
           </CustomNavLinkSmall>
@@ -97,10 +79,6 @@ const Header = (props: {
       </>
     );
   };
-
-  useEffect(() => {
-    checkUserType(props.userType);
-  }, []);
 
   return (
     <HeaderSection>

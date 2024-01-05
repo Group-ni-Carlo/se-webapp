@@ -11,12 +11,14 @@ const Login: React.FC = () => {
 
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
+    const currentToken = localStorage.getItem('token');
     const response = await fetch(
       `${process.env.REACT_APP_BACKEND_CONNECTION}/login`,
       {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json'
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${currentToken}`
         },
         body: JSON.stringify({
           email,

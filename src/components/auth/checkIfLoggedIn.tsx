@@ -1,5 +1,7 @@
 import { useState, useEffect } from 'react';
 
+import { headers } from '../../utils/headers';
+
 interface UserProps {
   id: number;
   first_name: string;
@@ -13,16 +15,12 @@ const checkIfLoggedIn = () => {
   const [user, setUser] = useState<UserProps | null>(null);
 
   useEffect(() => {
-    const token = localStorage.getItem('token');
     const fetchUser = async () => {
       const res = await fetch(
         `${process.env.REACT_APP_BACKEND_CONNECTION}/user/profile`,
         {
           method: 'GET',
-          headers: {
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer ${token}`
-          }
+          headers
         }
       );
       const { userInfo } = await res.json();

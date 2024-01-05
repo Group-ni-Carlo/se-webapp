@@ -4,6 +4,7 @@ import Header from '../components/Header/';
 import '../index.css';
 
 import checkIfLoggedIn from '../components/auth/checkIfLoggedIn';
+import checkIfAdmin from '../components/auth/checkIfAdmin';
 
 interface UserProps {
   id: number;
@@ -13,42 +14,40 @@ interface UserProps {
 }
 
 const Home = () => {
-  let currentUser: UserProps;
+  const [currentUser, setCurrentUser] = useState<UserProps>({
+    id: 0,
+    firstName: 'Menu',
+    lastName: '',
+    type: ''
+  });
+  const [adminStatus, setAdminStatus] = useState(false);
   const navigate = useNavigate();
-  const { user, isLoggedIn, loading } = checkIfLoggedIn();
+
+  const { user, isLoggedIn } = checkIfLoggedIn();
+  const { isAdmin } = checkIfAdmin();
 
   const redirectToProfile = () => {
     navigate(`/user/${currentUser.id}`);
   };
 
-  if (!user) {
-    currentUser = {
-      id: 0,
-      firstName: '',
-      lastName: '',
-      type: ''
-    };
-  } else {
-    currentUser = {
-      id: user.id,
-      firstName: user.first_name,
-      lastName: user.last_name,
-      type: user.type
-    };
-  }
-
   useEffect(() => {
-    if (!loading) {
-      window.alert(`Logged in: ${isLoggedIn}`);
+    setAdminStatus(isAdmin);
+    if (user) {
+      setCurrentUser({
+        id: user.id,
+        firstName: user.first_name,
+        lastName: user.last_name,
+        type: user.type
+      });
     }
-  }, [isLoggedIn, loading]);
+  }, [isLoggedIn, isAdmin]);
 
   return (
     <Fragment>
       <span className="home">
         <Header
           name={currentUser.firstName}
-          userType={currentUser.type}
+          isAdmin={adminStatus}
           status={isLoggedIn}
           linkToProfie={() => redirectToProfile()}
         />
