@@ -3,6 +3,8 @@ import AnnouncementCard from '../../components/admin/announcements/AnnouncementC
 import { Link } from 'react-router-dom';
 import { AnnouncementDataProps } from '../../props/announcements';
 
+import { headers } from '../../utils/headers';
+
 export const AnnouncementsList = () => {
   const [announcementsData, setAnnouncementsData] = useState<
     AnnouncementDataProps[]
@@ -12,7 +14,10 @@ export const AnnouncementsList = () => {
     const fetchData = async () => {
       try {
         const response = await fetch(
-          `${process.env.REACT_APP_BACKEND_CONNECTION}/announcements/`
+          `${process.env.REACT_APP_BACKEND_CONNECTION}/announcements/`,
+          {
+            headers
+          }
         );
 
         if (!response.ok) {

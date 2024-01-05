@@ -1,6 +1,8 @@
 import React, { ChangeEvent, Fragment, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
+import { headers } from '../../utils/headers';
+
 const CreateAnnouncements = () => {
   const [imageFile, setImageFile] = useState<File | null>(null);
   const [imageSrc, setImageSrc] = useState<string | null>(null);
@@ -57,7 +59,8 @@ const CreateAnnouncements = () => {
         `${process.env.REACT_APP_BACKEND_CONNECTION}/admin/announcements/create`,
         {
           method: 'POST',
-          body: formData
+          body: formData,
+          headers
         }
       );
 

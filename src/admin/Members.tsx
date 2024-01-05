@@ -4,6 +4,7 @@ import Icon from '@mdi/react';
 import { mdiAccount, mdiAccountCheck } from '@mdi/js';
 import AdminMemberList from '../components/admin/members/AdminMemberList';
 import AdminMemberRequests from '../components/admin/members/AdminMemberRequests';
+import { headers } from '../utils/headers';
 
 type Member = {
   id: number;
@@ -20,31 +21,38 @@ const Members: React.FC = () => {
 
   const fetchMemberList = async () => {
     const res = await fetch(
-      `${process.env.REACT_APP_BACKEND_CONNECTION}/members/list`
+      `${process.env.REACT_APP_BACKEND_CONNECTION}/admin/members/list`,
+      {
+        headers
+      }
     );
-    const data = await res.json();
-    setMembers(data);
+    const { rows } = await res.json();
+    setMembers(rows);
   };
 
   const fetchRequests = async () => {
     const res = await fetch(
-      `${process.env.REACT_APP_BACKEND_CONNECTION}/members/requests`
+      `${process.env.REACT_APP_BACKEND_CONNECTION}/admin/members/requests`,
+      {
+        headers
+      }
     );
-    const data = await res.json();
-    setRequests(data);
+    const { rows } = await res.json();
+    setRequests(rows);
   };
 
   const approveMember = async (key: number) => {
     const member = {
       id: key
     };
-    const res = await fetch(`https://sewebapp.onrender.com/members/approve`, {
-      method: 'PATCH',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(member)
-    });
+    const res = await fetch(
+      `${process.env.REACT_APP_BACKEND_CONNECTION}/admin/members/approve`,
+      {
+        method: 'PATCH',
+        headers,
+        body: JSON.stringify(member)
+      }
+    );
     if (!res.ok) {
       console.log('Error approving member!');
     }
@@ -56,13 +64,14 @@ const Members: React.FC = () => {
     const member = {
       id: key
     };
-    const res = await fetch(`https://sewebapp.onrender.com/members/delete`, {
-      method: 'DELETE',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(member)
-    });
+    const res = await fetch(
+      `${process.env.REACT_APP_BACKEND_CONNECTION}/admin/members/delete`,
+      {
+        method: 'DELETE',
+        headers,
+        body: JSON.stringify(member)
+      }
+    );
     if (!res.ok) {
       console.log('Error deleting member!');
     }
