@@ -1,11 +1,11 @@
 import React, { Fragment, useState, useEffect } from 'react';
-import { MerchDataProps } from '../props/announcements';
+import MerchCard from '../../components/admin/merch/MerchCard';
+import { Link } from 'react-router-dom';
+import { MerchDataProps } from '../../props/announcements';
 
-import { headers } from '../utils/headers';
-import MerchCard from '../components/admin/merch/MerchCard';
-import MerchCardUser from '../components/admin/merch/MerchCardUser';
+import { headers } from '../../utils/headers';
 
-const Merch = () => {
+export const MerchList = () => {
   const [merchData, setMerchData] = useState<MerchDataProps[]>([]);
 
   useEffect(() => {
@@ -35,9 +35,14 @@ const Merch = () => {
 
   return (
     <Fragment>
-      <div className="flex flex-col items-center gap-4 justify-center m-4 lg:flex-row">
+      <Link to="/admin/merch/create" className="flex flex-row my-4">
+        <h1 className="mx-auto p-4 hover:bg-neutral-300 active:bg-secondary-100">
+          Create Merch
+        </h1>
+      </Link>
+      <div className="flex m-4">
         {merchData.map((merch) => (
-          <MerchCardUser
+          <MerchCard
             key={merch.id}
             id={merch.id}
             title={merch.title}
@@ -50,5 +55,3 @@ const Merch = () => {
     </Fragment>
   );
 };
-
-export default Merch;

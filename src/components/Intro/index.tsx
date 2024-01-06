@@ -1,6 +1,6 @@
 import { Row, Col } from 'antd';
 import { Fade } from 'react-awesome-reveal';
-import image from '../../assets/img/icons/2922280_27002.jpg';
+import image from './se-logo.jpg';
 
 const FadeAny = Fade as any;
 
@@ -11,16 +11,17 @@ const IntroContent = () => {
         <Row justify="space-between" align="middle">
           <Col lg={11} md={11} sm={11} xs={24}>
             <div className="relative max-w-lg lg:pb-16">
-              <h5 className="mb-4">Welcome to Software Engineering</h5>
+              <h5 className="mb-8">Welcome to Software Engineering</h5>
               <p className="mb-8">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                Praesent ut est et est tristique feugiat. Maecenas pharetra
-                tellus felis, id vestibulum ligula venenatis vitae. Aliquam.
+                the application of a systematic, disciplined, quantifiable
+                approach to the development, operation, and maintenance of
+                software, and the study of these approaches; that is, the
+                application of engineering to software.
               </p>
             </div>
           </Col>
           <Col lg={11} md={11} sm={12} xs={24}>
-            <img src={image} width="250px" height="250px" />
+            <img src={image} width="250px" height="250px" className="mb-32" />
           </Col>
         </Row>
       </FadeAny>

@@ -10,8 +10,13 @@ interface PartnerDataProps {
   date: string;
 }
 
-export const PartnersList: React.FC = () => {
+interface PartnersListProps {
+  isLogged: boolean;
+}
+
+export const PartnersListUser: React.FC<PartnersListProps> = ({ isLogged }) => {
   const [partnersData, setPartnersData] = useState<PartnerDataProps[]>([]);
+  const [logStatus, setLogStatus] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -36,6 +41,7 @@ export const PartnersList: React.FC = () => {
         const data = await response.json();
         console.log(data);
         setPartnersData(data);
+        setLogStatus(isLogged);
       } catch (error) {
         console.error('Error fetching data:', error);
       }
@@ -46,21 +52,20 @@ export const PartnersList: React.FC = () => {
 
   return (
     <Fragment>
-      <Link to="/admin/partners/create" className="flex flex-row my-4">
-        <h1 className="mx-auto p-4 hover:bg-neutral-300 active:bg-secondary-100">
-          Create Partners
-        </h1>
-      </Link>
       <div className="flex m-4">
-        {partnersData.map((partner: PartnerDataProps) => (
-          <PartnerCard
-            key={partner.id}
-            id={partner.id}
-            title={partner.title}
-            logoSrc={partner.logoSrc}
-            date={partner.date}
-          />
-        ))}
+        {logStatus ? (
+          partnersData.map((partner: PartnerDataProps) => (
+            <PartnerCard
+              key={partner.id}
+              id={partner.id}
+              title={partner.title}
+              logoSrc={partner.logoSrc}
+              date={partner.date}
+            />
+          ))
+        ) : (
+          <></>
+        )}
       </div>
     </Fragment>
   );

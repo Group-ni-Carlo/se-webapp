@@ -36,7 +36,7 @@ const Announcements = () => {
   }, []);
 
   return (
-    <div className="flex flex-col items-center gap-4 justify-center m-4">
+    <div className="flex flex-col items-center gap-4 justify-center m-4 lg:flex-row">
       {announcementsData.map((announcement) => (
         <AnnouncementCard
           key={announcement.id}

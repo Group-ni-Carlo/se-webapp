@@ -42,7 +42,7 @@ export const AnnouncementsList = () => {
           Create Announcements
         </h1>
       </Link>
-      <div className="flex m-4">
+      <div className="flex flex-col m-4 lg:flex-row">
         {announcementsData.map((announcement) => (
           <AnnouncementCard
             key={announcement.id}

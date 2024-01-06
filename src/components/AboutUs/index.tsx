@@ -10,16 +10,11 @@ const AboutUs = () => {
         <Row
           justify="center"
           align="middle"
-          className="max-w-570px md:max-w-full"
+          className="max-w-570px md:max-w-full mb-48"
         >
           <Col lg={24} md={24} sm={24} xs={24}>
             <h5>About us</h5>
-            <p className="py-3">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut nisi
-              neque, ultrices hendrerit lobortis a, condimentum sit amet magna.
-              Morbi scelerisque ipsum vitae purus gravida, sit amet mattis urna
-              porttitor. Maecenas ultrices erat justo.
-            </p>
+            <p className="py-3">We are the home of PSSE!</p>
           </Col>
         </Row>
       </SlideAny>

@@ -19,6 +19,10 @@ import Merch from './app/Merch';
 import LandingPage from './components/Home/LandingPage';
 import Announcements from './app/Announcements';
 import AdminLandingPage from './components/admin/AdminLandingPage';
+import CreateMerch from './admin/merch/CreateMerch';
+import { MerchList } from './admin/merch/MerchList';
+import EditMerch from './admin/merch/EditMerch';
+import Partners from './app/Partners';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -48,7 +52,7 @@ root.render(
             path="/admin/announcements/edit/:id"
             element={<EditAnnouncements />}
           ></Route>
-          <Route path="/admin/partners" element={<PartnersList />}></Route>
+          <Route path="/admin/partners" element={<Partners />}></Route>
           <Route
             path="/admin/partners/create"
             element={<CreatePartners />}
@@ -57,6 +61,9 @@ root.render(
             path="/admin/partners/edit/:id"
             element={<EditPartners />}
           ></Route>
+          <Route path="/admin/merch" element={<MerchList />}></Route>
+          <Route path="/admin/merch/create" element={<CreateMerch />}></Route>
+          <Route path="/admin/merch/edit/:id" element={<EditMerch />}></Route>
         </Route>
         <Route path="/login" element={<LoginPage />} />
         <Route path="/register" element={<RegisterPage />} />
