@@ -35,9 +35,9 @@ const CreatePartnerLogo = () => {
       return;
     }
 
-    if (!(title.length <= 50 && title.length >= 1)) {
-      console.log('Title length must be between 1 and 50');
-      alert('Title length must be between 1 and 50');
+    if (!(title.length <= 60 && title.length >= 1)) {
+      console.log('Title length must be between 1 and 60');
+      alert('Title length must be between 1 and 60');
       return;
     }
 
@@ -74,7 +74,7 @@ const CreatePartnerLogo = () => {
   return (
     <Fragment>
       <form
-        className="flex flex-col items-center justify-center"
+        className="flex flex-col items-center justify-center mt-40"
         method="post"
         onSubmit={handlePost}
       >
@@ -83,17 +83,20 @@ const CreatePartnerLogo = () => {
             <img
               src={logoSrc}
               alt="Preview"
-              style={{ width: '100px', height: '100px' }}
+              className="w-96 h-48 rounded-lg border border-secondary-100"
             />
           ) : (
-            <div className="w-24 h-24 border border-neutral-100"></div>
+            <div className="w-96 h-48 bg-secondary-300 flex justify-center items-center  rounded-lg">
+              <label
+                htmlFor="logo_file"
+                className={
+                  'title text-xl hover:cursor-pointer text-shade-light'
+                }
+              >
+                Upload Logo
+              </label>
+            </div>
           )}
-          <label
-            htmlFor="logo_file"
-            className="px-4 py-2 bg-neutral-500 rounded-lg hover:cursor-pointer"
-          >
-            Upload Logo
-          </label>
           <input
             accept="image/*"
             type="file"
@@ -102,23 +105,27 @@ const CreatePartnerLogo = () => {
             onChange={handleLogoChange}
           />
         </div>
-        <div className="flex flex-col items-center">
-          <label htmlFor="title">Title</label>
+        <div className="flex flex-col mt-6">
+          <label htmlFor="title" className={'title text-xl'}>
+            Title
+          </label>
           <input
             type="text"
             id="title"
-            className="border border-neutral-500 rounded-lg"
+            className={
+              'w-96 py-2 px-2 mt-2 text-shade-light bg-secondary-100 rounded body'
+            }
             onChange={handleTitleChange}
           />
         </div>
-        <div>
-          <button
-            className="px-4 py-2 bg-neutral-500 rounded-lg hover:cursor-pointer"
-            type="submit"
-          >
-            Submit
-          </button>
-        </div>
+        <button
+          className={
+            'mt-6 px-8 py-2 text-shade-light text-xl bg-secondary-700 rounded-lg hover:cursor-pointer title'
+          }
+          type="submit"
+        >
+          Submit
+        </button>
       </form>
     </Fragment>
   );

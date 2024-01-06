@@ -47,11 +47,13 @@ export const PartnersList: React.FC = () => {
   return (
     <Fragment>
       <Link to="/admin/partners/create" className="flex flex-row my-4">
-        <h1 className="mx-auto p-4 hover:bg-neutral-300 active:bg-secondary-100">
+        <h1
+          className={`title text-shade-light mx-auto p-4 bg-secondary-700 rounded-lg text-3xl my-8`}
+        >
           Create Partners
         </h1>
       </Link>
-      <div className="flex m-4">
+      <div className="flex flex-col m-4 lg:flex-row">
         {partnersData.map((partner: PartnerDataProps) => (
           <PartnerCard
             key={partner.id}
