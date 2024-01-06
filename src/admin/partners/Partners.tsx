@@ -10,7 +10,11 @@ interface PartnerDataProps {
   date: string;
 }
 
-export const PartnersList: React.FC = () => {
+interface PartnersListProps {
+  isLogged: boolean;
+}
+
+export const PartnersListUser: React.FC<PartnersListProps> = ({ isLogged }) => {
   const [partnersData, setPartnersData] = useState<PartnerDataProps[]>([]);
 
   useEffect(() => {
@@ -52,15 +56,19 @@ export const PartnersList: React.FC = () => {
         </h1>
       </Link>
       <div className="flex m-4">
-        {partnersData.map((partner: PartnerDataProps) => (
-          <PartnerCard
-            key={partner.id}
-            id={partner.id}
-            title={partner.title}
-            logoSrc={partner.logoSrc}
-            date={partner.date}
-          />
-        ))}
+        {!isLogged ? (
+          <></>
+        ) : (
+          partnersData.map((partner: PartnerDataProps) => (
+            <PartnerCard
+              key={partner.id}
+              id={partner.id}
+              title={partner.title}
+              logoSrc={partner.logoSrc}
+              date={partner.date}
+            />
+          ))
+        )}
       </div>
     </Fragment>
   );
