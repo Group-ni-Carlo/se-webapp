@@ -59,7 +59,7 @@ const EditAnnouncements = () => {
     setTitle(event.target.value);
   };
 
-  const handleCaptionChange = (event: ChangeEvent<HTMLInputElement>) => {
+  const handleCaptionChange = (event: ChangeEvent<HTMLTextAreaElement>) => {
     setCaption(event.target.value);
   };
 
@@ -153,16 +153,23 @@ const EditAnnouncements = () => {
       >
         <div className="flex flex-col items-center">
           {imageSrc ? (
-            <img src={imageSrc} alt="Preview" className="w-24 h-24" />
+            <img
+              src={imageSrc}
+              alt="Preview"
+              className="w-96 h-48 rounded-lg border border-secondary-100"
+            />
           ) : (
-            <div className="w-24 h-24 border border-neutral-100"></div>
+            <div className="w-96 h-48 bg-secondary-300 flex justify-center items-center  rounded-lg">
+              <label
+                htmlFor="image_file"
+                className={
+                  'title text-xl hover:cursor-pointer text-shade-light'
+                }
+              >
+                Upload Image
+              </label>
+            </div>
           )}
-          <label
-            htmlFor="image_file"
-            className="px-4 py-2 bg-neutral-500 rounded-lg hover:cursor-pointer"
-          >
-            Upload Image
-          </label>
           <input
             accept="image/*"
             type="file"
@@ -171,37 +178,42 @@ const EditAnnouncements = () => {
             onChange={handleImageChange}
           />
         </div>
-        <div className="flex flex-col items-center">
-          <label htmlFor="title">Title</label>
+        <div className="flex flex-col mt-6">
+          <label htmlFor="title" className={'title text-xl'}>
+            Title
+          </label>
           <input
             type="text"
             id="title"
-            className="border border-neutral-500 rounded-lg"
+            className={
+              'w-96 py-2 px-2 mt-2 text-shade-light bg-secondary-100 rounded body'
+            }
             onChange={handleTitleChange}
-            value={title}
           />
         </div>
-        <div className="flex flex-col items-center">
-          <label htmlFor="caption">Caption</label>
-          <input
-            type="text"
+        <div className="flex flex-col mt-6">
+          <label htmlFor="caption" className={'title text-xl'}>
+            Caption
+          </label>
+          <textarea
             id="caption"
-            className="border border-neutral-500 rounded-lg"
+            className={
+              'w-96 px-2 py-4 mt-2 text-shade-light bg-secondary-100 rounded resize-y overflow-visible body'
+            }
             onChange={handleCaptionChange}
-            value={caption}
           />
         </div>
-        <div>
+        <div className="flex justify-center">
           <button
-            className="px-4 py-2 bg-neutral-500 rounded-lg hover:cursor-pointer"
+            className={
+              'mt-6 px-8 py-2 text-shade-light text-xl bg-secondary-700 rounded-lg hover:cursor-pointer title'
+            }
             type="submit"
           >
             Submit
           </button>
-        </div>
-        <div>
           <div
-            className="px-4 py-2 bg-neutral-500 rounded-lg hover:cursor-pointer"
+            className="px-4 py-2 bg-feedback-error rounded-lg hover:cursor-pointer"
             onClick={handleDeleteRequest}
           >
             Delete
