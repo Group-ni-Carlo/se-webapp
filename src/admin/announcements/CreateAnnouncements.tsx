@@ -22,7 +22,7 @@ const CreateAnnouncements = () => {
     setTitle(event.target.value);
   };
 
-  const handleCaptionChange = (event: ChangeEvent<HTMLInputElement>) => {
+  const handleCaptionChange = (event: ChangeEvent<HTMLTextAreaElement>) => {
     setCaption(event.target.value);
   };
 
@@ -87,7 +87,7 @@ const CreateAnnouncements = () => {
   return (
     <Fragment>
       <form
-        className="flex flex-col items-center justify-center"
+        className="flex flex-col items-center justify-center mt-40"
         method="post"
         onSubmit={handlePost}
       >
@@ -96,17 +96,20 @@ const CreateAnnouncements = () => {
             <img
               src={imageSrc}
               alt="Preview"
-              style={{ width: '100px', height: '100px' }}
+              className="w-96 h-48 rounded-lg border border-secondary-100"
             />
           ) : (
-            <div className="w-24 h-24 border border-neutral-100"></div>
+            <div className="w-96 h-48 bg-secondary-300 flex justify-center items-center  rounded-lg">
+              <label
+                htmlFor="image_file"
+                className={
+                  'title text-xl hover:cursor-pointer text-shade-light'
+                }
+              >
+                Upload Image
+              </label>
+            </div>
           )}
-          <label
-            htmlFor="image_file"
-            className="px-4 py-2 bg-neutral-500 rounded-lg hover:cursor-pointer"
-          >
-            Upload Image
-          </label>
           <input
             accept="image/*"
             type="file"
@@ -115,32 +118,39 @@ const CreateAnnouncements = () => {
             onChange={handleImageChange}
           />
         </div>
-        <div className="flex flex-col items-center">
-          <label htmlFor="title">Title</label>
+        <div className="flex flex-col mt-6">
+          <label htmlFor="title" className={'title text-xl'}>
+            Title
+          </label>
           <input
             type="text"
             id="title"
-            className="border border-neutral-500 rounded-lg"
+            className={
+              'w-96 py-2 px-2 mt-2 text-shade-light bg-secondary-100 rounded body'
+            }
             onChange={handleTitleChange}
           />
         </div>
-        <div className="flex flex-col items-center">
-          <label htmlFor="caption">Caption</label>
-          <input
-            type="text"
+        <div className="flex flex-col mt-6">
+          <label htmlFor="caption" className={'title text-xl'}>
+            Caption
+          </label>
+          <textarea
             id="caption"
-            className="border border-neutral-500 rounded-lg"
+            className={
+              'w-96 px-2 py-4 mt-2 text-shade-light bg-secondary-100 rounded resize-y overflow-visible body'
+            }
             onChange={handleCaptionChange}
           />
         </div>
-        <div>
-          <button
-            className="px-4 py-2 bg-neutral-500 rounded-lg hover:cursor-pointer"
-            type="submit"
-          >
-            Submit
-          </button>
-        </div>
+        <button
+          className={
+            'mt-6 px-8 py-2 text-shade-light text-xl bg-secondary-700 rounded-lg hover:cursor-pointer title'
+          }
+          type="submit"
+        >
+          Submit
+        </button>
       </form>
     </Fragment>
   );

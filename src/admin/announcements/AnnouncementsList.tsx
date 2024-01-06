@@ -38,7 +38,9 @@ export const AnnouncementsList = () => {
   return (
     <Fragment>
       <Link to="/admin/announcements/create" className="flex flex-row my-4">
-        <h1 className="mx-auto p-4 hover:bg-neutral-300 active:bg-secondary-100">
+        <h1
+          className={`title text-shade-light mx-auto p-4 bg-secondary-700 rounded-lg text-3xl my-8`}
+        >
           Create Announcements
         </h1>
       </Link>
