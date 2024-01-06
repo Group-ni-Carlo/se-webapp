@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Fragment } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { headers } from '../../utils/headers';
 
 import checkIfLoggedIn from '../auth/checkIfLoggedIn';
 
@@ -14,38 +13,29 @@ const Register: React.FC = () => {
 
   const navigate = useNavigate();
 
-  const { isLoggedIn } = checkIfLoggedIn();
-
-  const redirectToHome = () => {
-    navigate(`/`);
-  };
-
-  useEffect(() => {
-    if (isLoggedIn) {
-      redirectToHome();
-    }
-  }, [isLoggedIn]);
-
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
 
     if (!email.endsWith('@cpu.edu.ph')) {
-      window.alert('Must be a CPU student');
       return;
     }
 
     try {
+      const token = localStorage.getItem('token');
       const response = await fetch(
         `${process.env.REACT_APP_BACKEND_CONNECTION}/register`,
         {
           method: 'POST',
-          headers,
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`
+          },
           body: JSON.stringify({
-            firstName,
-            lastName,
             username,
             email,
-            password
+            password,
+            firstName,
+            lastName
           })
         }
       );
