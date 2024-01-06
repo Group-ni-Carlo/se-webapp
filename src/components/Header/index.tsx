@@ -15,12 +15,7 @@ import {
 } from './styles';
 import { useNavigate } from 'react-router-dom';
 
-const Header = (props: {
-  name: string;
-  isAdmin: boolean;
-  status: boolean;
-  linkToProfie: () => void;
-}) => {
+const Header = (props: { name: string; isAdmin: boolean; status: boolean }) => {
   const [visible, setVisibility] = useState(false);
   const navigate = useNavigate();
 
@@ -46,6 +41,7 @@ const Header = (props: {
 
   const MenuItem = () => {
     const scrollTo = (id: string) => {
+      navigate('/');
       const element = document.getElementById(id) as HTMLDivElement;
       element.scrollIntoView({
         behavior: 'smooth'
@@ -54,21 +50,27 @@ const Header = (props: {
     };
     return (
       <>
-        <CustomNavLinkSmall onClick={() => scrollTo('events')}>
-          <Span>{'Events'}</Span>
-        </CustomNavLinkSmall>
-        <CustomNavLinkSmall onClick={() => navigate('/merch')}>
-          <Span>{'Merch'}</Span>
-        </CustomNavLinkSmall>
-        <CustomNavLinkSmall onClick={() => scrollTo('partners')}>
-          <Span>{'Partners & Sponsors'}</Span>
-        </CustomNavLinkSmall>
         {props.isAdmin ? (
           <CustomNavLinkSmall onClick={() => navigate('/admin')}>
             <Span>{'Admin'}</Span>
           </CustomNavLinkSmall>
         ) : (
           <span></span>
+        )}
+        {!props.status ? (
+          <></>
+        ) : (
+          <span>
+            <CustomNavLinkSmall onClick={() => navigate('/merch')}>
+              <Span>{'Merch'}</Span>
+            </CustomNavLinkSmall>
+            <CustomNavLinkSmall onClick={() => scrollTo('partners')}>
+              <Span>{'Partners & Sponsors'}</Span>
+            </CustomNavLinkSmall>
+            <CustomNavLinkSmall onClick={() => navigate('/announcements')}>
+              <Span>{'Announcements'}</Span>
+            </CustomNavLinkSmall>
+          </span>
         )}
         <CustomNavLinkSmall onClick={() => handleLogStatus(props.status)}>
           <Span>{props.status ? 'Log Out' : 'Log In'}</Span>
@@ -95,11 +97,7 @@ const Header = (props: {
           <Col style={{ marginBottom: '2.5rem' }}>
             <Label onClick={onClose}>
               <Col span={12}>
-                {!props.status ? (
-                  <Menu>Menu</Menu>
-                ) : (
-                  <Menu onClick={props.linkToProfie}>{props.name}</Menu>
-                )}
+                <Menu>Menu</Menu>
               </Col>
               <Col span={12}>
                 <Outline />
