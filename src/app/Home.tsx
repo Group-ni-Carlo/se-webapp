@@ -1,12 +1,12 @@
 import { Fragment, useState, useEffect } from 'react';
-import { useNavigate, Outlet } from 'react-router-dom';
+import { Outlet } from 'react-router-dom';
 import Header from '../components/Header/';
 import '../index.css';
 
 import checkIfLoggedIn from '../components/auth/checkIfLoggedIn';
 import checkIfAdmin from '../components/auth/checkIfAdmin';
 
-interface UserProps {
+export interface UserProps {
   id: number;
   firstName: string;
   lastName: string;
