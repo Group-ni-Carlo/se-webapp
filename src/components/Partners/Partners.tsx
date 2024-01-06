@@ -21,7 +21,7 @@ interface PartnerProp {
   isLogged: boolean;
 }
 
-const Partners: React.FC<PartnerProp> = ({ isLogged }) => {
+const PartnersFrontPage: React.FC<PartnerProp> = ({ isLogged }) => {
   const [partnersData, setPartnersData] = useState<Partner[]>([]);
   const [logStatus, setLogStatus] = useState(false);
 
@@ -84,4 +84,4 @@ const Partners: React.FC<PartnerProp> = ({ isLogged }) => {
   );
 };
 
-export default Partners;
+export default PartnersFrontPage;

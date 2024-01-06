@@ -42,11 +42,13 @@ const Header = (props: { name: string; isAdmin: boolean; status: boolean }) => {
   const MenuItem = () => {
     const scrollTo = (id: string) => {
       navigate('/');
-      const element = document.getElementById(id) as HTMLDivElement;
-      element.scrollIntoView({
-        behavior: 'smooth'
-      });
-      setVisibility(false);
+      setTimeout(() => {
+        const element = document.getElementById(id) as HTMLDivElement;
+        element.scrollIntoView({
+          behavior: 'smooth'
+        });
+        setVisibility(false);
+      }, 2000);
     };
     return (
       <>
