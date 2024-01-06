@@ -4,13 +4,13 @@ import { mdiAccount, mdiDelete } from '@mdi/js';
 
 type Props = {
   name: string;
-  year: string;
+  type: string;
   deleteMember: () => void;
 };
 
 const AdminMemberList: React.FC<Props> = (props: {
   name: string;
-  year: string;
+  type: string;
   deleteMember: () => void;
 }) => {
   return (
@@ -25,12 +25,9 @@ const AdminMemberList: React.FC<Props> = (props: {
         </div>
         <div className="flex flex-col w-full gap-0">
           <span className={`body text-md`}>{props.name}</span>
-          <span className={`body text-sm text-neutral-300`}>{props.year}</span>
+          <span className={`body text-sm text-neutral-300`}>{props.type}</span>
         </div>
         <div className="flex flex-row gap-4 justify-end">
-          <span>
-            <Icon className="text-shade-dark" path={mdiAccount} size={1} />
-          </span>
           <span onClick={props.deleteMember}>
             <Icon className="text-shade-dark" path={mdiDelete} size={1} />
           </span>
