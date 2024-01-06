@@ -9,7 +9,8 @@ import {
   mdiTshirtCrew,
   mdiHandshake,
   mdiAccount,
-  mdiMenu
+  mdiMenu,
+  mdiHome
 } from '@mdi/js';
 
 const AdminNavBar: React.FC = () => {
@@ -49,6 +50,14 @@ const AdminNavBar: React.FC = () => {
             </span>
           </div>
           <div className="flex flex-col mt-5 w-full gap-y-4">
+            <Link
+              to="/"
+              className="flex flex-row gap-x-2 pl-10 py-2 bg-shade-light hover:bg-neutral-300 active:bg-secondary-100"
+              onClick={() => setToggleMenu(!toggleMenu)}
+            >
+              <Icon className="text-primary-700" path={mdiHome} size={1} />
+              <h1>Home</h1>
+            </Link>
             <Link
               to="/admin/announcements"
               className="flex flex-row gap-x-2 pl-10 py-2 bg-shade-light hover:bg-neutral-300 active:bg-secondary-100"

@@ -21,14 +21,9 @@ const Home = () => {
     type: ''
   });
   const [adminStatus, setAdminStatus] = useState(false);
-  const navigate = useNavigate();
 
   const { user, isLoggedIn } = checkIfLoggedIn();
   const { isAdmin } = checkIfAdmin();
-
-  const redirectToProfile = () => {
-    navigate(`/user/${currentUser.id}`);
-  };
 
   useEffect(() => {
     setAdminStatus(isAdmin);
@@ -49,7 +44,6 @@ const Home = () => {
           name={currentUser.firstName}
           isAdmin={adminStatus}
           status={isLoggedIn}
-          linkToProfie={() => redirectToProfile()}
         />
         <Outlet />
       </span>
