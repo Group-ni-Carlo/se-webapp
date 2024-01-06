@@ -1,11 +1,10 @@
 import React, { Fragment, useState, useEffect } from 'react';
 
 import Container from '../../common/Container';
-import Partners from '../../components/Partners/index';
-import IntroContent from '../../components/Intro/index';
-import AboutUs from '../../components/AboutUs/index';
-import Footer from '../../components/Footer/';
-import { PartnersListUser } from '../../admin/partners/Partners';
+import IntroContent from '../Intro/Intro';
+import AboutUs from '../AboutUs/AboutUs';
+import Footer from '../Footer/Footer';
+import PartnersFrontPage from '../Partners/Partners';
 import checkIfLoggedIn from '../auth/checkIfLoggedIn';
 
 const LandingPage: React.FC = () => {
@@ -20,7 +19,7 @@ const LandingPage: React.FC = () => {
     <Fragment>
       <Container>
         <IntroContent />
-        <Partners isLogged={logStatus} />
+        <PartnersFrontPage isLogged={logStatus} />
         <AboutUs />
       </Container>
       <Footer />

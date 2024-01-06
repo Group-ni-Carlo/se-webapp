@@ -52,7 +52,7 @@ root.render(
             path="/admin/announcements/edit/:id"
             element={<EditAnnouncements />}
           ></Route>
-          <Route path="/admin/partners" element={<Partners />}></Route>
+          <Route path="/admin/partners" element={<PartnersList />}></Route>
           <Route
             path="/admin/partners/create"
             element={<CreatePartners />}

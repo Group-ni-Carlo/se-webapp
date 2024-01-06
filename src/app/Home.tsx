@@ -1,6 +1,6 @@
 import { Fragment, useState, useEffect } from 'react';
 import { Outlet } from 'react-router-dom';
-import Header from '../components/Header/';
+import Header from '../components/Header/Header';
 import '../index.css';
 
 import checkIfLoggedIn from '../components/auth/checkIfLoggedIn';
