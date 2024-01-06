@@ -31,19 +31,24 @@ const Admin: React.FC = () => {
   }, [isLoggedIn, isAdmin, adminLoading]);
   return (
     <Fragment>
-      {adminStatus ? (
-        <span>
-          <AdminNavBar />
-          <Outlet />
-        </span>
-      ) : (
-        <div className="flex flex-1 align-center justify-center">
-          <span className="text-feedback-error text-4xl">
-            You are not an admin!
-          </span>
-        </div>
-      )}
+      <AdminNavBar />
+      <Outlet />
     </Fragment>
+
+    // <Fragment>
+    //   {adminStatus ? (
+    //     <span>
+    //       <AdminNavBar />
+    //       <Outlet />
+    //     </span>
+    //   ) : (
+    //     <div className="flex flex-1 align-center justify-center">
+    //       <span className="text-feedback-error text-4xl">
+    //         You are not an admin!
+    //       </span>
+    //     </div>
+    //   )}
+    // </Fragment>
   );
 };
 

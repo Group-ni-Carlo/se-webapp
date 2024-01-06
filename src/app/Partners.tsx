@@ -5,8 +5,8 @@ import { PartnersListUser } from '../admin/partners/Partners';
 
 const Partners = () => {
   const [logStatus, setLogStatus] = useState(false);
+  const { isLoggedIn } = checkIfLoggedIn();
   useEffect(() => {
-    const { isLoggedIn } = checkIfLoggedIn();
     setLogStatus(isLoggedIn);
   });
 
