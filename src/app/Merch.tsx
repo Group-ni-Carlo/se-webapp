@@ -1,5 +1,4 @@
 import React, { Fragment, useState } from 'react';
-
 import IndivMerch from '../components/Merch/IndivMerch';
 
 const Merch = () => {

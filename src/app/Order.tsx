@@ -1,13 +1,12 @@
 import React, { Fragment, useEffect } from 'react';
 import { useSearchParams, useLocation } from 'react-router-dom';
 
-import OrderForm from '../components/Merch/OrderForm';
 import { headers } from '../utils/headers';
 
 const Order: React.FC = () => {
   let orderedItem: string;
   const [searchParams] = useSearchParams();
-  const item = searchParams.get('item');
+  const item = searchParams.get('id');
   console.log(item);
 
   if (!item) orderedItem = '';
@@ -35,11 +34,7 @@ const Order: React.FC = () => {
     document.body.classList.remove('home');
   });
 
-  return (
-    <Fragment>
-      <OrderForm item={orderedItem} submit={submit} />
-    </Fragment>
-  );
+  return <Fragment></Fragment>;
 };
 
 export default Order;

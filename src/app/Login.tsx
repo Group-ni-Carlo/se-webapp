@@ -1,7 +1,6 @@
 import React, { Fragment, useEffect } from 'react';
 import { Outlet, useNavigate } from 'react-router-dom';
 import Login from '../components/Login/Login';
-
 import checkIfLoggedIn from '../components/auth/checkIfLoggedIn';
 
 const LoginPage: React.FC = () => {
