@@ -16,6 +16,7 @@ interface PartnersListProps {
 
 export const PartnersListUser: React.FC<PartnersListProps> = ({ isLogged }) => {
   const [partnersData, setPartnersData] = useState<PartnerDataProps[]>([]);
+  const [logStatus, setLogStatus] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -40,6 +41,7 @@ export const PartnersListUser: React.FC<PartnersListProps> = ({ isLogged }) => {
         const data = await response.json();
         console.log(data);
         setPartnersData(data);
+        setLogStatus(isLogged);
       } catch (error) {
         console.error('Error fetching data:', error);
       }
@@ -50,15 +52,8 @@ export const PartnersListUser: React.FC<PartnersListProps> = ({ isLogged }) => {
 
   return (
     <Fragment>
-      <Link to="/admin/partners/create" className="flex flex-row my-4">
-        <h1 className="mx-auto p-4 hover:bg-neutral-300 active:bg-secondary-100">
-          Create Partners
-        </h1>
-      </Link>
       <div className="flex m-4">
-        {!isLogged ? (
-          <></>
-        ) : (
+        {logStatus ? (
           partnersData.map((partner: PartnerDataProps) => (
             <PartnerCard
               key={partner.id}
@@ -68,6 +63,8 @@ export const PartnersListUser: React.FC<PartnersListProps> = ({ isLogged }) => {
               date={partner.date}
             />
           ))
+        ) : (
+          <></>
         )}
       </div>
     </Fragment>

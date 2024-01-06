@@ -21,12 +21,14 @@ const Home = () => {
     type: ''
   });
   const [adminStatus, setAdminStatus] = useState(false);
+  const [logStatus, setLogStatus] = useState(false);
 
   const { user, isLoggedIn } = checkIfLoggedIn();
   const { isAdmin } = checkIfAdmin();
 
   useEffect(() => {
     setAdminStatus(isAdmin);
+    setLogStatus(isLoggedIn);
     if (user) {
       setCurrentUser({
         id: user.id,
@@ -43,7 +45,7 @@ const Home = () => {
         <Header
           name={currentUser.firstName}
           isAdmin={adminStatus}
-          status={isLoggedIn}
+          status={logStatus}
         />
         <Outlet />
       </span>

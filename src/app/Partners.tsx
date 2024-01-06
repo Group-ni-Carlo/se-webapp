@@ -4,11 +4,15 @@ import checkIfLoggedIn from '../components/auth/checkIfLoggedIn';
 import { PartnersListUser } from '../admin/partners/Partners';
 
 const Partners = () => {
-  const { isLoggedIn } = checkIfLoggedIn();
+  const [logStatus, setLogStatus] = useState(false);
+  useEffect(() => {
+    const { isLoggedIn } = checkIfLoggedIn();
+    setLogStatus(isLoggedIn);
+  });
 
   return (
     <Fragment>
-      <PartnersListUser isLogged={isLoggedIn} />
+      <PartnersListUser isLogged={logStatus} />
     </Fragment>
   );
 };
