@@ -1,4 +1,5 @@
 import React, { Fragment, useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 import Icon from '@mdi/react';
 
 import { mdiAccount, mdiAccountCheck } from '@mdi/js';
@@ -11,7 +12,7 @@ type Member = {
   first_name: string;
   last_name: string;
   email: string;
-  year_level: string;
+  type: string;
 };
 
 const Members: React.FC = () => {
@@ -45,17 +46,22 @@ const Members: React.FC = () => {
     const member = {
       id: key
     };
+    const token = localStorage.getItem('token');
     const res = await fetch(
       `${process.env.REACT_APP_BACKEND_CONNECTION}/admin/members/approve`,
       {
         method: 'PATCH',
-        headers,
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`
+        },
         body: JSON.stringify(member)
       }
     );
     if (!res.ok) {
       console.log('Error approving member!');
     }
+    window.alert('User approved!');
     await fetchMemberList();
     await fetchRequests();
   };
@@ -64,17 +70,22 @@ const Members: React.FC = () => {
     const member = {
       id: key
     };
+    const token = localStorage.getItem('token');
     const res = await fetch(
       `${process.env.REACT_APP_BACKEND_CONNECTION}/admin/members/delete`,
       {
         method: 'DELETE',
-        headers,
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`
+        },
         body: JSON.stringify(member)
       }
     );
     if (!res.ok) {
       console.log('Error deleting member!');
     }
+    window.alert('User deleted!');
     await fetchMemberList();
     await fetchRequests();
   };
@@ -125,7 +136,7 @@ const Members: React.FC = () => {
             <AdminMemberList
               key={member.id}
               name={`${member.first_name} ${member.last_name}`}
-              year={member.year_level}
+              type={member.type}
               deleteMember={() => deleteMemberOrRequest(member.id)}
             />
           ))
