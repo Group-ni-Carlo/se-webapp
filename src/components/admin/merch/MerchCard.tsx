@@ -1,8 +1,8 @@
-import React from 'react';
-import { MerchDataProps } from '../../../props/announcements';
+import { FC } from 'react';
+import { MerchDataProps } from '../../../props/MerchDataProps';
 import { Link } from 'react-router-dom';
 
-const MerchCard: React.FC<MerchDataProps> = ({
+const MerchCard: FC<MerchDataProps> = ({
   id,
   title,
   caption,

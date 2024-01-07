@@ -1,8 +1,8 @@
 import { FC, Fragment, useState, useEffect } from 'react';
-import AnnouncementCard from '../../components/admin/announcements/AnnouncementCard';
 import { Link } from 'react-router-dom';
-import { AnnouncementDataProps } from '../../props/announcements';
 
+import AnnouncementCard from '../../components/admin/announcements/AnnouncementCard';
+import { AnnouncementDataProps } from '../../props/announcements';
 import { headers } from '../../utils/headers';
 
 export const AnnouncementsList: FC = () => {

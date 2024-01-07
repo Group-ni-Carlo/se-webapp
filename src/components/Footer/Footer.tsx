@@ -1,3 +1,4 @@
+import { FC } from 'react';
 import { Row, Col } from 'antd';
 import { SvgIcon } from '../../common/SvgIcon';
 import Container from '../../common/Container';
@@ -7,7 +8,7 @@ interface SocialLinkProps {
   src: string;
 }
 
-const Footer = () => {
+const Footer: FC = () => {
   const SocialLink = ({ href, src }: SocialLinkProps) => {
     return (
       <a

@@ -1,5 +1,7 @@
-import { useState } from 'react';
+import { FC, useState } from 'react';
 import { Row, Col, Drawer } from 'antd';
+import { useNavigate } from 'react-router-dom';
+
 import Container from '../../common/Container';
 import { SvgIcon } from '../../common/SvgIcon';
 import {
@@ -13,9 +15,14 @@ import {
   Outline,
   Span
 } from './styles';
-import { useNavigate } from 'react-router-dom';
 
-const Header = (props: { name: string; isAdmin: boolean; status: boolean }) => {
+import { HeaderProps } from '../../props/HeaderProps';
+
+const Header: FC<HeaderProps> = (props: {
+  name: string;
+  isAdmin: boolean;
+  status: boolean;
+}) => {
   const [visible, setVisibility] = useState(false);
   const navigate = useNavigate();
 

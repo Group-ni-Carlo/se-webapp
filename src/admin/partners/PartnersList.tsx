@@ -1,16 +1,11 @@
-import React, { Fragment, useState, useEffect } from 'react';
-import PartnerCard from '../../components/admin/partners/PartnerCard';
+import { FC, Fragment, useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { headers } from '../../utils/headers';
 
-interface PartnerDataProps {
-  id: number;
-  title: string;
-  logoSrc: string;
-  date: string;
-}
+import PartnerCard from '../../components/admin/partners/PartnerCard';
+import { PartnerDataProps } from '../../props/PartnerDataProps';
 
-export const PartnersList: React.FC = () => {
+export const PartnersList: FC = () => {
   const [partnersData, setPartnersData] = useState<PartnerDataProps[]>([]);
 
   useEffect(() => {

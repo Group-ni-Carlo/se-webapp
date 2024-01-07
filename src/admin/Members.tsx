@@ -1,21 +1,13 @@
-import React, { Fragment, useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { FC, Fragment, useEffect, useState } from 'react';
 import Icon from '@mdi/react';
 
 import { mdiAccount, mdiAccountCheck } from '@mdi/js';
 import AdminMemberList from '../components/admin/members/AdminMemberList';
 import AdminMemberRequests from '../components/admin/members/AdminMemberRequests';
 import { headers } from '../utils/headers';
+import { Member } from '../props/Member';
 
-type Member = {
-  id: number;
-  first_name: string;
-  last_name: string;
-  email: string;
-  type: string;
-};
-
-const Members: React.FC = () => {
+const Members: FC = () => {
   const [activeSelection, setActiveSelection] = useState(0);
   const [members, setMembers] = useState<Member[]>([]);
   const [requests, setRequests] = useState<Member[]>([]);

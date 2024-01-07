@@ -1,4 +1,4 @@
-import React, { useState, useEffect, Fragment } from 'react';
+import { FC, useState, useEffect, Fragment } from 'react';
 import { Row, Col } from 'antd';
 import { Fade } from 'react-awesome-reveal';
 import { Carousel } from 'react-responsive-carousel';
@@ -6,22 +6,12 @@ import { headers } from '../../utils/headers';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 
 import PartnersList from '../Home/PartnersList';
-import { PartnersDataProps } from '../../props/partners';
+import { PartnerProp } from '../../props/PartnerProp';
+import { Partner } from '../../props/Partner';
 
-type Partner = {
-  id: number;
-  logoSrc: string;
-  title: string;
-  date: string;
-};
+const PartnersFrontPage: FC<PartnerProp> = ({ isLogged }) => {
+  const FadeAny = Fade as any;
 
-const FadeAny = Fade as any;
-
-interface PartnerProp {
-  isLogged: boolean;
-}
-
-const PartnersFrontPage: React.FC<PartnerProp> = ({ isLogged }) => {
   const [partnersData, setPartnersData] = useState<Partner[]>([]);
   const [logStatus, setLogStatus] = useState(false);
 

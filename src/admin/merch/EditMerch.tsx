@@ -1,5 +1,5 @@
 import { FC, ChangeEvent, Fragment, useState, useEffect } from 'react';
-import { MerchDataProps } from '../../props/announcements';
+import { MerchDataProps } from '../../props/MerchDataProps';
 import { useParams, useNavigate } from 'react-router-dom';
 
 import { headers } from '../../utils/headers';

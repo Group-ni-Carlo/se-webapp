@@ -1,8 +1,9 @@
-import React from 'react';
+import { FC } from 'react';
 import { Fragment } from 'react';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import Icon from '@mdi/react';
+
 import {
   mdiKeyboardBackspace,
   mdiBullhorn,
@@ -13,7 +14,7 @@ import {
   mdiHome
 } from '@mdi/js';
 
-const AdminNavBar: React.FC = () => {
+const AdminNavBar: FC = () => {
   const [toggleMenu, setToggleMenu] = useState(false);
   return (
     <Fragment>

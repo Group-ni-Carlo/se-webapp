@@ -1,8 +1,8 @@
-import React, { ChangeEvent, Fragment, useState } from 'react';
+import { FC, ChangeEvent, Fragment, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { headers } from '../../utils/headers';
 
-const CreatePartnerLogo = () => {
+const CreatePartnerLogo: FC = () => {
   const [logoFile, setLogoFile] = useState<File | null>(null);
   const [logoSrc, setLogoSrc] = useState<string | null>(null);
   const [title, setTitle] = useState('');

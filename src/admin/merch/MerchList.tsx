@@ -1,11 +1,11 @@
-import React, { Fragment, useState, useEffect } from 'react';
-import MerchCard from '../../components/admin/merch/MerchCard';
+import { FC, Fragment, useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { MerchDataProps } from '../../props/announcements';
 
+import { MerchDataProps } from '../../props/MerchDataProps';
 import { headers } from '../../utils/headers';
+import MerchCard from '../../components/admin/merch/MerchCard';
 
-export const MerchList = () => {
+export const MerchList: FC = () => {
   const [merchData, setMerchData] = useState<MerchDataProps[]>([]);
 
   useEffect(() => {

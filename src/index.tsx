@@ -1,9 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import reportWebVitals from './reportWebVitals';
 import 'antd/dist/antd.css';
 import './index.css';
-import reportWebVitals from './reportWebVitals';
+
 import Home from './app/Home';
 import Admin from './admin/Admin';
 import Members from './admin/Members';
@@ -22,7 +23,6 @@ import AdminLandingPage from './components/admin/AdminLandingPage';
 import CreateMerch from './admin/merch/CreateMerch';
 import { MerchList } from './admin/merch/MerchList';
 import EditMerch from './admin/merch/EditMerch';
-import Partners from './app/Partners';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement

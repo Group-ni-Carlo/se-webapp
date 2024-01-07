@@ -1,19 +1,12 @@
-import { Fragment, useState, useEffect } from 'react';
+import { FC, Fragment, useState, useEffect } from 'react';
 import { Outlet } from 'react-router-dom';
-import Header from '../components/Header/Header';
-import '../index.css';
 
+import Header from '../components/Header/Header';
 import checkIfLoggedIn from '../components/auth/checkIfLoggedIn';
 import checkIfAdmin from '../components/auth/checkIfAdmin';
+import { UserProps } from '../props/UserProps';
 
-export interface UserProps {
-  id: number;
-  firstName: string;
-  lastName: string;
-  type: string;
-}
-
-const Home = () => {
+const Home: FC = () => {
   const [currentUser, setCurrentUser] = useState<UserProps>({
     id: 0,
     firstName: 'Menu',

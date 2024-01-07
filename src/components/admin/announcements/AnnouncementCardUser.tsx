@@ -1,7 +1,8 @@
-import React from 'react';
+import { FC } from 'react';
+
 import { AnnouncementDataProps } from '../../../props/announcements';
 
-const AnnouncementCardUser: React.FC<AnnouncementDataProps> = ({
+const AnnouncementCardUser: FC<AnnouncementDataProps> = ({
   title,
   caption,
   imageSrc

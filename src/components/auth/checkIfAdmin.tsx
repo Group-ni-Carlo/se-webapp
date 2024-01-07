@@ -2,8 +2,8 @@ import { useState, useEffect } from 'react';
 import { headers } from '../../utils/headers';
 
 const checkIfAdmin = () => {
-  const [isAdmin, setIsAdmin] = useState(false);
-  const [adminLoading, setAdminLoading] = useState(true);
+  const [isAdmin, setIsAdmin] = useState<boolean>(false);
+  const [adminLoading, setAdminLoading] = useState<boolean>(true);
 
   useEffect(() => {
     const fetchUser = async () => {

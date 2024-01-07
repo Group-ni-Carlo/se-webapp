@@ -1,11 +1,10 @@
-import React, { Fragment, useEffect, useState } from 'react';
+import { FC, Fragment, useEffect } from 'react';
 import { Outlet, useNavigate } from 'react-router-dom';
 import checkIfLoggedIn from '../components/auth/checkIfLoggedIn';
 import Login from '../components/login/login';
 
-const LoginPage: React.FC = () => {
+const LoginPage: FC = () => {
   const navigate = useNavigate();
-  const [logStatus, setLogStatus] = useState(false);
 
   const redirectToHome = () => {
     navigate(`/`);
@@ -14,8 +13,6 @@ const LoginPage: React.FC = () => {
   const { isLoggedIn } = checkIfLoggedIn();
 
   useEffect(() => {
-    setLogStatus(isLoggedIn);
-
     setTimeout(() => {
       if (isLoggedIn) {
         redirectToHome();

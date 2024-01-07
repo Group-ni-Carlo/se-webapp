@@ -1,9 +1,9 @@
-import { Row, Col } from 'antd';
+import { FC } from 'react';
 import { Slide } from 'react-awesome-reveal';
+import { Row, Col } from 'antd';
 
-const SlideAny = Slide as any;
-
-const AboutUs = () => {
+const AboutUs: FC = () => {
+  const SlideAny = Slide as any;
   return (
     <section className="relative pt-15 pb-30 text-center flex justify-center mt-10">
       <SlideAny direction="up">

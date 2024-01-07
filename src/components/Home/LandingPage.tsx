@@ -1,4 +1,4 @@
-import React, { Fragment, useState, useEffect } from 'react';
+import { FC, Fragment, useState, useEffect } from 'react';
 
 import Container from '../../common/Container';
 import IntroContent from '../Intro/Intro';
@@ -7,7 +7,7 @@ import Footer from '../Footer/Footer';
 import PartnersFrontPage from '../Partners/Partners';
 import checkIfLoggedIn from '../auth/checkIfLoggedIn';
 
-const LandingPage: React.FC = () => {
+const LandingPage: FC = () => {
   const [logStatus, setLogStatus] = useState(false);
 
   const { isLoggedIn } = checkIfLoggedIn();

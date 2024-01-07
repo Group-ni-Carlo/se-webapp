@@ -1,8 +1,9 @@
-import React from 'react';
-import { AnnouncementDataProps } from '../../../props/announcements';
+import { FC } from 'react';
 import { Link } from 'react-router-dom';
 
-const AnnouncementCard: React.FC<AnnouncementDataProps> = ({
+import { AnnouncementDataProps } from '../../../props/announcements';
+
+const AnnouncementCard: FC<AnnouncementDataProps> = ({
   id,
   title,
   caption,

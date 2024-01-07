@@ -1,7 +1,7 @@
 import { FC, ChangeEvent, Fragment, useState, useEffect } from 'react';
-import { AnnouncementDataProps } from '../../props/announcements';
 import { useParams, useNavigate } from 'react-router-dom';
 
+import { AnnouncementDataProps } from '../../props/announcements';
 import { headers } from '../../utils/headers';
 
 const EditAnnouncements: FC = () => {
