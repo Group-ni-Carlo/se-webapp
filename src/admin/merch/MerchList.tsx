@@ -39,7 +39,7 @@ export const MerchList: FC = () => {
         <h1
           className={`title text-shade-light mx-auto p-4 bg-secondary-700 rounded-lg text-3xl my-8`}
         >
-          Create Partners
+          Create Merch
         </h1>
       </Link>
       <div className="flex m-4">
