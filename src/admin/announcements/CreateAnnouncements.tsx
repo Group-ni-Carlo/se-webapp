@@ -1,9 +1,9 @@
-import React, { ChangeEvent, Fragment, useState } from 'react';
+import { FC, ChangeEvent, Fragment, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import { headers } from '../../utils/headers';
 
-const CreateAnnouncements = () => {
+const CreateAnnouncements: FC = () => {
   const [imageFile, setImageFile] = useState<File | null>(null);
   const [imageSrc, setImageSrc] = useState<string | null>(null);
   const [title, setTitle] = useState('');

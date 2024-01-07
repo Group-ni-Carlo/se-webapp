@@ -66,14 +66,22 @@ const PartnersFrontPage: React.FC<PartnerProp> = ({ isLogged }) => {
                     proud to acknowledge and appreciate the contributions of our
                     valued partners and sponsors.
                   </p>
-                  <Carousel className="mx-auto w-3/4" showArrows infiniteLoop>
-                    {partnersData.map((partner) => (
-                      <PartnersList
-                        key={partner.id}
-                        imageSrc={partner.logoSrc}
-                      />
-                    ))}
-                  </Carousel>
+                  {partnersData.length > 0 ? (
+                    <Carousel className="mx-auto w-3/4" showArrows infiniteLoop>
+                      {partnersData.map((partner) => (
+                        <PartnersList
+                          key={partner.id}
+                          imageSrc={partner.logoSrc}
+                        />
+                      ))}
+                    </Carousel>
+                  ) : (
+                    <div className="flex flex-row w-full w-full gap-4 items-center justify-center mt-4 py-4 px-4">
+                      <span className="text-2xl body text-feedback-error text-center">
+                        Sorry, we haven't partnered with anyone recently!
+                      </span>
+                    </div>
+                  )}
                 </div>
               </Col>
             </Row>
