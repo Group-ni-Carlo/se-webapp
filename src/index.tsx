@@ -23,6 +23,7 @@ import AdminLandingPage from './components/admin/AdminLandingPage';
 import CreateMerch from './admin/merch/CreateMerch';
 import { MerchList } from './admin/merch/MerchList';
 import EditMerch from './admin/merch/EditMerch';
+import Order from './app/Order/Order';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -36,6 +37,7 @@ root.render(
           <Route path="/" element={<LandingPage />}></Route>
           <Route path="/announcements" element={<Announcements />}></Route>
           <Route path="/merch" element={<Merch />}></Route>
+          <Route path="/merch/order/:id" element={<Order />}></Route>
         </Route>
         <Route path="/admin" element={<Admin />}>
           <Route path="/admin" element={<AdminLandingPage />} />
