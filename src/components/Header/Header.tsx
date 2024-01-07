@@ -1,7 +1,5 @@
 import { FC, useState } from 'react';
 import { Row, Col, Drawer } from 'antd';
-import { useNavigate } from 'react-router-dom';
-
 import Container from '../../common/Container';
 import { SvgIcon } from '../../common/SvgIcon';
 import {
@@ -15,7 +13,7 @@ import {
   Outline,
   Span
 } from './styles';
-
+import { useNavigate } from 'react-router-dom';
 import { HeaderProps } from '../../props/HeaderProps';
 
 const Header: FC<HeaderProps> = (props: {
@@ -47,16 +45,6 @@ const Header: FC<HeaderProps> = (props: {
   };
 
   const MenuItem = () => {
-    const scrollTo = (id: string) => {
-      navigate('/');
-      setTimeout(() => {
-        const element = document.getElementById(id) as HTMLDivElement;
-        element.scrollIntoView({
-          behavior: 'smooth'
-        });
-        setVisibility(false);
-      }, 2000);
-    };
     return (
       <>
         {props.isAdmin ? (
@@ -72,9 +60,6 @@ const Header: FC<HeaderProps> = (props: {
           <span>
             <CustomNavLinkSmall onClick={() => navigate('/merch')}>
               <Span>{'Merch'}</Span>
-            </CustomNavLinkSmall>
-            <CustomNavLinkSmall onClick={() => scrollTo('partners')}>
-              <Span>{'Partners & Sponsors'}</Span>
             </CustomNavLinkSmall>
             <CustomNavLinkSmall onClick={() => navigate('/announcements')}>
               <Span>{'Announcements'}</Span>
