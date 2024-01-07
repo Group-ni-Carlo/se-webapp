@@ -24,6 +24,7 @@ import CreateMerch from './admin/merch/CreateMerch';
 import { MerchList } from './admin/merch/MerchList';
 import EditMerch from './admin/merch/EditMerch';
 import Order from './app/Order/Order';
+import Statistics from './admin/Statistics';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -66,6 +67,7 @@ root.render(
           <Route path="/admin/merch" element={<MerchList />}></Route>
           <Route path="/admin/merch/create" element={<CreateMerch />}></Route>
           <Route path="/admin/merch/edit/:id" element={<EditMerch />}></Route>
+          <Route path="/admin/statistics" element={<Statistics />}></Route>
         </Route>
         <Route path="/login" element={<LoginPage />} />
         <Route path="/register" element={<RegisterPage />} />
