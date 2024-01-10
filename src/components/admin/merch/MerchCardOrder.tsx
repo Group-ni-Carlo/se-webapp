@@ -6,23 +6,21 @@ const MerchCardOrder: FC<MerchDataOrderProps> = ({
   title,
   price,
   sales,
+  revenue,
   imageSrc
 }) => {
-  console.log('React Image Src:', imageSrc);
-
   return (
-    <div className="border border-neutral-100 shadow-md rounded-lg mr-4">
-      <div className="w-[356px] h-[356px]">
-        <img
-          src={imageSrc}
-          alt=""
-          className="border-b border-b-neutral-100 rounded-lg w-full h-full"
-        />
+    <div className="bg-white shadow-lg rounded-lg overflow-hidden max-w-xs mx-auto">
+      <div className="relative">
+        <img src={imageSrc} alt="" className="w-full h-64 object-cover" />
       </div>
-      <div className="flex flex-col px-4 pt-2 pb-6 body">
-        <h1 className="text-xl">{title}</h1>
-        <p className="text-sm text-neutral-500 pt-4">Price: ₱{price}</p>
-        <p className="text-sm text-neutral-500">Sales: {sales}</p>
+      <div className="py-6 px-4 space-y-2">
+        <h1 className="font-bold text-gray-800 text-lg leading-tight">
+          {title}
+        </h1>
+        <p className="text-gray-600 text-sm">Price: ₱{price}</p>
+        <p className="text-gray-600 text-sm">Revenue: ₱{revenue}</p>
+        <p className="text-gray-600 text-sm">Sales: {sales}</p>
       </div>
     </div>
   );
