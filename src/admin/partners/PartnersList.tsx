@@ -1,16 +1,11 @@
-import React, { Fragment, useState, useEffect } from 'react';
-import PartnerCard from '../../components/admin/partners/PartnerCard';
+import { FC, Fragment, useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { headers } from '../../utils/headers';
 
-interface PartnerDataProps {
-  id: number;
-  title: string;
-  logoSrc: string;
-  date: string;
-}
+import PartnerCard from '../../components/admin/partners/PartnerCard';
+import { PartnerDataProps } from '../../props/PartnerDataProps';
 
-export const PartnersList: React.FC = () => {
+export const PartnersList: FC = () => {
   const [partnersData, setPartnersData] = useState<PartnerDataProps[]>([]);
 
   useEffect(() => {
@@ -54,15 +49,23 @@ export const PartnersList: React.FC = () => {
         </h1>
       </Link>
       <div className="flex flex-col m-4 lg:flex-row">
-        {partnersData.map((partner: PartnerDataProps) => (
-          <PartnerCard
-            key={partner.id}
-            id={partner.id}
-            title={partner.title}
-            logoSrc={partner.logoSrc}
-            date={partner.date}
-          />
-        ))}
+        {partnersData.length > 0 ? (
+          partnersData.map((partner: PartnerDataProps) => (
+            <PartnerCard
+              key={partner.id}
+              id={partner.id}
+              title={partner.title}
+              logoSrc={partner.logoSrc}
+              date={partner.date}
+            />
+          ))
+        ) : (
+          <div className="flex flex-row w-full w-full gap-4 border-y border-solid border-secondary-700 items-center justify-center mt-4 py-4 px-4">
+            <span className="text-2xl text-feedback-error">
+              No partners yet!
+            </span>
+          </div>
+        )}
       </div>
     </Fragment>
   );

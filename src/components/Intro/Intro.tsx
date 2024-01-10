@@ -1,10 +1,11 @@
+import { FC } from 'react';
 import { Row, Col } from 'antd';
 import { Fade } from 'react-awesome-reveal';
 import image from './se-logo.jpg';
 
 const FadeAny = Fade as any;
 
-const IntroContent = () => {
+const IntroContent: FC = () => {
   return (
     <section className="relative py-20 px-8 lg:py-32 lg:px-0">
       <FadeAny direction="right">

@@ -1,10 +1,10 @@
-import React, { Fragment, useEffect } from 'react';
+import { FC, Fragment, useEffect } from 'react';
 import { Outlet, useNavigate } from 'react-router-dom';
 
 import checkIfLoggedIn from '../components/auth/checkIfLoggedIn';
 import Register from '../components/register/register';
 
-const RegisterPage: React.FC = () => {
+const RegisterPage: FC = () => {
   const navigate = useNavigate();
 
   const { isLoggedIn } = checkIfLoggedIn();

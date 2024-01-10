@@ -1,8 +1,9 @@
-import React from 'react';
+import { FC } from 'react';
 import { Fragment } from 'react';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import Icon from '@mdi/react';
+
 import {
   mdiKeyboardBackspace,
   mdiBullhorn,
@@ -10,10 +11,11 @@ import {
   mdiHandshake,
   mdiAccount,
   mdiMenu,
-  mdiHome
+  mdiHome,
+  mdiChartLine
 } from '@mdi/js';
 
-const AdminNavBar: React.FC = () => {
+const AdminNavBar: FC = () => {
   const [toggleMenu, setToggleMenu] = useState(false);
   return (
     <Fragment>
@@ -93,6 +95,14 @@ const AdminNavBar: React.FC = () => {
             >
               <Icon className="text-primary-700" path={mdiAccount} size={1} />
               <h1>Members</h1>
+            </Link>
+            <Link
+              to="/admin/statistics"
+              className="flex flex-row gap-x-2 pl-10 py-2 bg-shade-light hover:bg-neutral-300 active:bg-secondary-100"
+              onClick={() => setToggleMenu(!toggleMenu)}
+            >
+              <Icon className="text-primary-700" path={mdiChartLine} size={1} />
+              <h1>Statistics</h1>
             </Link>
           </div>
         </div>

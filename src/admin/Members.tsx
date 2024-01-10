@@ -1,21 +1,13 @@
-import React, { Fragment, useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { FC, Fragment, useEffect, useState } from 'react';
 import Icon from '@mdi/react';
 
 import { mdiAccount, mdiAccountCheck } from '@mdi/js';
 import AdminMemberList from '../components/admin/members/AdminMemberList';
 import AdminMemberRequests from '../components/admin/members/AdminMemberRequests';
 import { headers } from '../utils/headers';
+import { Member } from '../props/Member';
 
-type Member = {
-  id: number;
-  first_name: string;
-  last_name: string;
-  email: string;
-  type: string;
-};
-
-const Members: React.FC = () => {
+const Members: FC = () => {
   const [activeSelection, setActiveSelection] = useState(0);
   const [members, setMembers] = useState<Member[]>([]);
   const [requests, setRequests] = useState<Member[]>([]);
@@ -131,8 +123,9 @@ const Members: React.FC = () => {
           <h1>Requests</h1>
         </div>
       </nav>
-      {activeSelection === 0
-        ? members.map((member) => (
+      {activeSelection === 0 ? (
+        members.length > 0 ? (
+          members.map((member) => (
             <AdminMemberList
               key={member.id}
               name={`${member.first_name} ${member.last_name}`}
@@ -140,15 +133,28 @@ const Members: React.FC = () => {
               deleteMember={() => deleteMemberOrRequest(member.id)}
             />
           ))
-        : requests.map((request) => (
-            <AdminMemberRequests
-              key={request.id}
-              name={`${request.first_name} ${request.last_name}`}
-              email={request.email}
-              approveRequest={() => approveMember(request.id)}
-              deleteRequest={() => deleteMemberOrRequest(request.id)}
-            />
-          ))}
+        ) : (
+          <div className="flex flex-row w-full gap-4 border-y border-solid border-primary-300 items-center mt-4 py-4 px-4">
+            <span className="text-4xl text-feedback-error">
+              No members yet!
+            </span>
+          </div>
+        )
+      ) : requests.length > 0 ? (
+        requests.map((request) => (
+          <AdminMemberRequests
+            key={request.id}
+            name={`${request.first_name} ${request.last_name}`}
+            email={request.email}
+            approveRequest={() => approveMember(request.id)}
+            deleteRequest={() => deleteMemberOrRequest(request.id)}
+          />
+        ))
+      ) : (
+        <div className="flex flex-row w-full gap-4 border-y border-solid border-primary-300 items-center mt-4 py-4 px-4 items-center justify-center">
+          <span className="text-2xl text-feedback-error">No requests yet!</span>
+        </div>
+      )}
     </Fragment>
   );
 };

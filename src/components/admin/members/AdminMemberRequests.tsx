@@ -1,17 +1,10 @@
-'use client';
-import React from 'react';
+import { FC } from 'react';
 import Icon from '@mdi/react';
 
+import { RequestProps } from '../../../props/RequestProps';
 import { mdiAccount, mdiCheck, mdiClose } from '@mdi/js';
 
-type Props = {
-  name: string;
-  email: string;
-  approveRequest: () => void;
-  deleteRequest: () => void;
-};
-
-const AdminMemberRequests: React.FC<Props> = (props: {
+const AdminMemberRequests: FC<RequestProps> = (props: {
   name: string;
   email: string;
   approveRequest: () => void;

@@ -1,18 +1,12 @@
 import { useState, useEffect } from 'react';
 
 import { headers } from '../../utils/headers';
-
-interface UserProps {
-  id: number;
-  first_name: string;
-  last_name: string;
-  type: string;
-}
+import { UserDataProps } from '../../props/UserDataProps';
 
 const checkIfLoggedIn = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [loading, setLoading] = useState(true);
-  const [user, setUser] = useState<UserProps | null>(null);
+  const [user, setUser] = useState<UserDataProps | null>(null);
 
   useEffect(() => {
     const fetchUser = async () => {

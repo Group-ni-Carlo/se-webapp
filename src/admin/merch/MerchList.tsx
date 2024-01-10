@@ -1,11 +1,11 @@
-import React, { Fragment, useState, useEffect } from 'react';
-import MerchCard from '../../components/admin/merch/MerchCard';
+import { FC, Fragment, useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { MerchDataProps } from '../../props/announcements';
 
+import { MerchDataProps } from '../../props/MerchDataProps';
 import { headers } from '../../utils/headers';
+import MerchCard from '../../components/admin/merch/MerchCard';
 
-export const MerchList = () => {
+export const MerchList: FC = () => {
   const [merchData, setMerchData] = useState<MerchDataProps[]>([]);
 
   useEffect(() => {
@@ -36,21 +36,31 @@ export const MerchList = () => {
   return (
     <Fragment>
       <Link to="/admin/merch/create" className="flex flex-row my-4">
-        <h1 className="mx-auto p-4 hover:bg-neutral-300 active:bg-secondary-100">
+        <h1
+          className={`title text-shade-light mx-auto p-4 bg-secondary-700 rounded-lg text-3xl my-8`}
+        >
           Create Merch
         </h1>
       </Link>
       <div className="flex m-4">
-        {merchData.map((merch) => (
-          <MerchCard
-            key={merch.id}
-            id={merch.id}
-            title={merch.title}
-            price={merch.price}
-            caption={merch.caption}
-            imageSrc={merch.imageSrc}
-          />
-        ))}
+        {merchData.length > 0 ? (
+          merchData.map((merch) => (
+            <MerchCard
+              key={merch.id}
+              id={merch.id}
+              title={merch.title}
+              price={merch.price}
+              caption={merch.caption}
+              imageSrc={merch.imageSrc}
+            />
+          ))
+        ) : (
+          <div className="flex flex-row w-full w-full gap-4 border-y border-solid border-secondary-700 items-center justify-center mt-4 py-4 px-4">
+            <span className="text-2xl text-feedback-error">
+              No announcements yet!
+            </span>
+          </div>
+        )}
       </div>
     </Fragment>
   );

@@ -1,4 +1,4 @@
-import React, { useState, useEffect, Fragment } from 'react';
+import { FC, useState, useEffect, Fragment } from 'react';
 import { Row, Col } from 'antd';
 import { Fade } from 'react-awesome-reveal';
 import { Carousel } from 'react-responsive-carousel';
@@ -6,22 +6,12 @@ import { headers } from '../../utils/headers';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 
 import PartnersList from '../Home/PartnersList';
-import { PartnersDataProps } from '../../props/partners';
+import { PartnerProp } from '../../props/PartnerProp';
+import { Partner } from '../../props/Partner';
 
-type Partner = {
-  id: number;
-  logoSrc: string;
-  title: string;
-  date: string;
-};
+const PartnersFrontPage: FC<PartnerProp> = ({ isLogged }) => {
+  const FadeAny = Fade as any;
 
-const FadeAny = Fade as any;
-
-interface PartnerProp {
-  isLogged: boolean;
-}
-
-const PartnersFrontPage: React.FC<PartnerProp> = ({ isLogged }) => {
   const [partnersData, setPartnersData] = useState<Partner[]>([]);
   const [logStatus, setLogStatus] = useState(false);
 
@@ -66,14 +56,22 @@ const PartnersFrontPage: React.FC<PartnerProp> = ({ isLogged }) => {
                     proud to acknowledge and appreciate the contributions of our
                     valued partners and sponsors.
                   </p>
-                  <Carousel className="mx-auto w-3/4" showArrows infiniteLoop>
-                    {partnersData.map((partner) => (
-                      <PartnersList
-                        key={partner.id}
-                        imageSrc={partner.logoSrc}
-                      />
-                    ))}
-                  </Carousel>
+                  {partnersData.length > 0 ? (
+                    <Carousel className="mx-auto w-3/4" showArrows infiniteLoop>
+                      {partnersData.map((partner) => (
+                        <PartnersList
+                          key={partner.id}
+                          imageSrc={partner.logoSrc}
+                        />
+                      ))}
+                    </Carousel>
+                  ) : (
+                    <div className="flex flex-row w-full w-full gap-4 items-center justify-center mt-4 py-4 px-4">
+                      <span className="text-2xl body text-feedback-error text-center">
+                        Sorry, we haven't partnered with anyone recently!
+                      </span>
+                    </div>
+                  )}
                 </div>
               </Col>
             </Row>

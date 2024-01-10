@@ -1,15 +1,10 @@
-import React, { ChangeEvent, Fragment, useState, useEffect } from 'react';
+import { FC, ChangeEvent, Fragment, useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { headers } from '../../utils/headers';
 
-interface PartnerDataProps {
-  id: number;
-  logoSrc: string;
-  title: string;
-  date: string;
-}
+import { PartnerDataProps } from '../../props/PartnerDataProps';
 
-const EditPartnerLogo = () => {
+const EditPartnerLogo: FC = () => {
   const [logoFile, setLogoFile] = useState<File | null>(null);
   const [logoSrc, setLogoSrc] = useState<string | null>(null);
   const [title, setTitle] = useState('');

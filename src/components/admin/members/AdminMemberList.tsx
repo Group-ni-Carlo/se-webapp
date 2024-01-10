@@ -1,14 +1,10 @@
-import React, { Fragment } from 'react';
+import { FC, Fragment } from 'react';
 import Icon from '@mdi/react';
+
+import { MemberProps } from '../../../props/MemberProps';
 import { mdiAccount, mdiDelete } from '@mdi/js';
 
-type Props = {
-  name: string;
-  type: string;
-  deleteMember: () => void;
-};
-
-const AdminMemberList: React.FC<Props> = (props: {
+const AdminMemberList: FC<MemberProps> = (props: {
   name: string;
   type: string;
   deleteMember: () => void;

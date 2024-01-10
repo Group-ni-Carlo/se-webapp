@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { FC, useState } from 'react';
 import { Row, Col, Drawer } from 'antd';
 import Container from '../../common/Container';
 import { SvgIcon } from '../../common/SvgIcon';
@@ -14,8 +14,13 @@ import {
   Span
 } from './styles';
 import { useNavigate } from 'react-router-dom';
+import { HeaderProps } from '../../props/HeaderProps';
 
-const Header = (props: { name: string; isAdmin: boolean; status: boolean }) => {
+const Header: FC<HeaderProps> = (props: {
+  name: string;
+  isAdmin: boolean;
+  status: boolean;
+}) => {
   const [visible, setVisibility] = useState(false);
   const navigate = useNavigate();
 
@@ -40,16 +45,6 @@ const Header = (props: { name: string; isAdmin: boolean; status: boolean }) => {
   };
 
   const MenuItem = () => {
-    const scrollTo = (id: string) => {
-      navigate('/');
-      setTimeout(() => {
-        const element = document.getElementById(id) as HTMLDivElement;
-        element.scrollIntoView({
-          behavior: 'smooth'
-        });
-        setVisibility(false);
-      }, 2000);
-    };
     return (
       <>
         {props.isAdmin ? (
@@ -65,9 +60,6 @@ const Header = (props: { name: string; isAdmin: boolean; status: boolean }) => {
           <span>
             <CustomNavLinkSmall onClick={() => navigate('/merch')}>
               <Span>{'Merch'}</Span>
-            </CustomNavLinkSmall>
-            <CustomNavLinkSmall onClick={() => scrollTo('partners')}>
-              <Span>{'Partners & Sponsors'}</Span>
             </CustomNavLinkSmall>
             <CustomNavLinkSmall onClick={() => navigate('/announcements')}>
               <Span>{'Announcements'}</Span>

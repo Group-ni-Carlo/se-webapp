@@ -1,9 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import reportWebVitals from './reportWebVitals';
 import 'antd/dist/antd.css';
 import './index.css';
-import reportWebVitals from './reportWebVitals';
+
 import Home from './app/Home';
 import Admin from './admin/Admin';
 import Members from './admin/Members';
@@ -22,7 +23,8 @@ import AdminLandingPage from './components/admin/AdminLandingPage';
 import CreateMerch from './admin/merch/CreateMerch';
 import { MerchList } from './admin/merch/MerchList';
 import EditMerch from './admin/merch/EditMerch';
-import Partners from './app/Partners';
+import Order from './app/Order/Order';
+import Statistics from './admin/Statistics';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -36,6 +38,7 @@ root.render(
           <Route path="/" element={<LandingPage />}></Route>
           <Route path="/announcements" element={<Announcements />}></Route>
           <Route path="/merch" element={<Merch />}></Route>
+          <Route path="/merch/order/:id" element={<Order />}></Route>
         </Route>
         <Route path="/admin" element={<Admin />}>
           <Route path="/admin" element={<AdminLandingPage />} />
@@ -64,6 +67,7 @@ root.render(
           <Route path="/admin/merch" element={<MerchList />}></Route>
           <Route path="/admin/merch/create" element={<CreateMerch />}></Route>
           <Route path="/admin/merch/edit/:id" element={<EditMerch />}></Route>
+          <Route path="/admin/statistics" element={<Statistics />}></Route>
         </Route>
         <Route path="/login" element={<LoginPage />} />
         <Route path="/register" element={<RegisterPage />} />

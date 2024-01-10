@@ -1,20 +1,11 @@
-import React, { Fragment, useState, useEffect } from 'react';
+import { FC, Fragment, useState, useEffect } from 'react';
+
 import PartnerCard from '../../components/admin/partners/PartnerCard';
-import { Link } from 'react-router-dom';
 import { headers } from '../../utils/headers';
+import { PartnerDataProps } from '../../props/PartnerDataProps';
+import { PartnersListProps } from '../../props/PartnersListProps';
 
-interface PartnerDataProps {
-  id: number;
-  title: string;
-  logoSrc: string;
-  date: string;
-}
-
-interface PartnersListProps {
-  isLogged: boolean;
-}
-
-export const PartnersListUser: React.FC<PartnersListProps> = ({ isLogged }) => {
+export const PartnersListUser: FC<PartnersListProps> = ({ isLogged }) => {
   const [partnersData, setPartnersData] = useState<PartnerDataProps[]>([]);
   const [logStatus, setLogStatus] = useState(false);
 

@@ -1,10 +1,10 @@
-import React, { ChangeEvent, Fragment, useState, useEffect } from 'react';
-import { AnnouncementDataProps } from '../../props/announcements';
+import { FC, ChangeEvent, Fragment, useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 
+import { AnnouncementDataProps } from '../../props/announcements';
 import { headers } from '../../utils/headers';
 
-const EditAnnouncements = () => {
+const EditAnnouncements: FC = () => {
   const [imageFile, setImageFile] = useState<File | null>(null);
   const [imageSrc, setImageSrc] = useState<string | null>(null);
   const [title, setTitle] = useState('');

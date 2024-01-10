@@ -1,10 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import { FC, useState } from 'react';
 import { Fragment } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import checkIfLoggedIn from '../auth/checkIfLoggedIn';
-
-const Register: React.FC = () => {
+const Register: FC = () => {
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
